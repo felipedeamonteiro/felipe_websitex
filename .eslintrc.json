@@ -6,7 +6,8 @@
   "extends": [
     "standard-with-typescript",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -14,9 +15,11 @@
   },
   "plugins": [
     "react",
-    "react-hooks"
+    "react-hooks",
+    "prettier"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
