@@ -4,6 +4,7 @@
     "es2021": true
   },
   "extends": [
+    "next/core-web-vitals",
     "standard-with-typescript",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -19,7 +20,17 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false,
+        "arrowParens": "avoid"
+      }
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
