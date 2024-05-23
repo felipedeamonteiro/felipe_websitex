@@ -1,0 +1,88 @@
+@import '../../styles/themes/dark.scss';
+@import '../../styles/themes/light.scss';
+
+.sidebarContainer {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background: #00CDE2;
+  display: grid;
+  align-items: center;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  top: -100%;
+
+  &.opened {
+    opacity: 100%;
+    top: 0;
+  }
+
+  .darkFatimes {
+    color: $darkSidebarContainerCloseIcon;
+  }
+  .lightFatimes {
+    color: $lightSidebarContainerCloseIcon;
+  }
+
+  .iconDiv {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: transparent;
+    font-size: 2rem;
+    cursor: pointer;
+    outline: none;
+  }
+
+
+  .sidebarWrapper {
+    color: $lightSidebarContainerWrapper;
+
+    &.dark {
+      color: $darkSidebarContainerWrapper;
+    }
+  }
+}
+
+.sidebarMenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 80px);
+  text-align: center;
+  text-decoration: none;
+
+  li {
+    list-style-type: none;
+
+    .sidebarMenuLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      list-style: none;
+      transition: 0.2s ease-in-out;
+      text-decoration: none;
+      color: $lightSidebarMenuLinkText;
+      cursor: pointer;
+
+      &:hover {
+        color: $lightSidebarMenuLinkTextHover;
+        transition: 0.2s ease-in-out;
+      }
+
+      &.darkMenuLink {
+        color: $darkSidebarMenuLinkText;
+
+        &:hover {
+          color: $darkSidebarMenuLinkTextHover;
+          transition: 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+
