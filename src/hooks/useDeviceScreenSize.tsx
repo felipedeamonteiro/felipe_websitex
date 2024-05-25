@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-const mobileScreenMax = 576;
-// const sm = 768
-const tabletScreenMax = 992;
-// const lg = 1100
-// const xl = 1680
+export const mobileScreenMax = 576;
+export const sm = 768;
+export const tabletScreenMax = 992;
+export const lg = 1100;
+export const xl = 1680;
 
 interface WindowSizeProps {
   width: number | undefined;

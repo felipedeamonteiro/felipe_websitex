@@ -1,6 +1,5 @@
-import React, { ButtonHTMLAttributes } from "react";
-
-import { Container } from "./styles";
+import React, { type ButtonHTMLAttributes } from 'react';
+import style from './NeonButtonReal.module.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -16,15 +15,15 @@ const NeonButtonReal: React.FC<NeonButtonProps> = ({
   href,
 }) => {
   return (
-    <Container buttonColorHex={buttonColorHex}>
-      <a href={href}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div className={style.buttonContainer}>
+      <a className={buttonColorHex} href={href}>
+        <span className={buttonColorHex}></span>
+        <span className={buttonColorHex}></span>
+        <span className={buttonColorHex}></span>
+        <span className={buttonColorHex}></span>
         {children}
       </a>
-    </Container>
+    </div>
   );
 };
 

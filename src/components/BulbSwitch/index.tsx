@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-
-import { Container } from "./styles";
+'use client';
+import React from 'react';
+import style from './BulbSwitch.module.scss';
 
 interface BulbSwitchProps {
   handleDarkMode: () => void;
@@ -12,7 +12,7 @@ const BulbSwitch: React.FC<BulbSwitchProps> = ({
   darkMode,
 }) => {
   return (
-    <Container>
+    <div className={style.bulbContainer}>
       <div className="switch">
         <input
           type="checkbox"
@@ -34,7 +34,7 @@ const BulbSwitch: React.FC<BulbSwitchProps> = ({
           </i>
         </label>
       </div>
-    </Container>
+    </div>
   );
 };
 

@@ -3,16 +3,14 @@ import React from 'react';
 import style from './Sidebar.module.scss';
 import { clsx } from 'clsx';
 import { FaTimes } from 'react-icons/fa';
-import { useTheme } from '@/hooks/ThemeContext';
 
 interface SidebarProps {
+  isDarkMode: boolean;
   isOpen: boolean;
   toogle: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, toogle }) => {
-  const { isDarkMode } = useTheme();
-
+const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, isOpen, toogle }) => {
   return (
     <aside
       className={clsx(style.sidebarContainer, `${isOpen && style.opened}`)}

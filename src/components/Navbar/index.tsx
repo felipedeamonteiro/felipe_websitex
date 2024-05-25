@@ -1,18 +1,10 @@
-import React, { useState, useCallback } from "react";
-import { useDeviceScreenSize } from "../../hooks/useDeviceScreenSize";
-import BulbSwitch from "../BulbSwitch";
-import {
-  Nav,
-  NavbarContainer,
-  NavbarHome,
-  MobileContent,
-  MobileIcon,
-  NavMenu,
-  NavItem,
-  NavLinks,
-} from "./styles";
-import { FaBars } from "react-icons/fa";
-import NeonButtonReal from "../Buttons/NeonButtonReal";
+import React, { useState, useCallback } from 'react';
+import { useDeviceScreenSize } from '../../hooks/useDeviceScreenSize';
+import BulbSwitch from '../BulbSwitch';
+import style from './index.module.scss';
+import { FaBars } from 'react-icons/fa';
+import NeonButtonReal from '../Buttons/NeonButtonReal';
+import clsx from 'clsx';
 
 interface NavbarProps {
   toogle: () => void;
@@ -37,78 +29,108 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   }, []);
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeNavBarBackground);
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', changeNavBarBackground);
   }
+
+  console.log('style', style);
 
   return (
     <>
-      <Nav viewNavBar={viewNavBar}>
-        <NavbarContainer>
-          <NavbarHome href="#section-home">HOME</NavbarHome>
+      <nav className={clsx(style.navbar, !viewNavBar && style.transparent)}>
+        <div className={style.navbarContainer}>
+          <a
+            className={clsx(style.navbarHome, darkMode && style.dark)}
+            href="#section-home"
+          >
+            HOME
+          </a>
 
           {!isMobile && !isTablet ? (
-            <NavMenu>
+            <ul className={style.navMenu}>
               <BulbSwitch handleDarkMode={handleDarkMode} darkMode={darkMode} />
-              <NavItem>
+              <li className={style.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-experiencia"
-                    buttonColorHex="#03E9F4"
+                    buttonColorHex="button1"
                   >
                     Experiência
                   </NeonButtonReal>
                 ) : (
-                  <NavLinks href="#section-experiencia">EXPERIÊNCIA</NavLinks>
+                  <a
+                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    href="#section-experiencia"
+                  >
+                    EXPERIÊNCIA
+                  </a>
                 )}
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className={style.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-projetos"
-                    buttonColorHex="#C3A2FF"
+                    buttonColorHex="button2"
                   >
                     Projetos
                   </NeonButtonReal>
                 ) : (
-                  <NavLinks href="#section-projetos">PROJETOS</NavLinks>
+                  <a
+                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    href="#section-projetos"
+                  >
+                    PROJETOS
+                  </a>
                 )}
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className={style.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-sobreMim"
-                    buttonColorHex="#FF839E"
+                    buttonColorHex="button3"
                   >
                     Sobre Mim
                   </NeonButtonReal>
                 ) : (
-                  <NavLinks href="#section-sobreMim">SOBRE MIM</NavLinks>
+                  <a
+                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    href="#section-sobreMim"
+                  >
+                    SOBRE MIM
+                  </a>
                 )}
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className={style.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-contato"
-                    buttonColorHex="#0EF462"
+                    buttonColorHex="button4"
                   >
                     Contato
                   </NeonButtonReal>
                 ) : (
-                  <NavLinks href="#section-contato">CONTATO</NavLinks>
+                  <a
+                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    href="#section-contato"
+                  >
+                    CONTATO
+                  </a>
                 )}
-              </NavItem>
-            </NavMenu>
+              </li>
+            </ul>
           ) : (
-            <MobileContent>
+            <div className={style.mobileContent}>
               <BulbSwitch handleDarkMode={handleDarkMode} darkMode={darkMode} />
-              <MobileIcon onClick={toogle}>
+              <div
+                className={clsx(style.mobileIcon, darkMode && style.dark)}
+                onClick={toogle}
+              >
                 <FaBars />
-              </MobileIcon>
-            </MobileContent>
+              </div>
+            </div>
           )}
-        </NavbarContainer>
-      </Nav>
+        </div>
+      </nav>
     </>
   );
 };
