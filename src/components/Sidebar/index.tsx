@@ -13,22 +13,24 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, isOpen, toogle }) => {
   return (
     <aside
-      className={clsx(style.sidebarContainer, `${isOpen && style.opened}`)}
+      className={clsx([style.sidebarContainer, `${isOpen && style.opened}`])}
       onClick={toogle}
     >
       <div className={style.iconDiv} onClick={toogle}>
         <FaTimes
-          className={clsx(isDarkMode ? style.darkFatimes : style.lightFatimes)}
+          className={clsx([
+            isDarkMode ? style.darkFatimes : style.lightFatimes,
+          ])}
         />
       </div>
-      <div className={clsx(style.sidebarWrapper, isDarkMode && style.dark)}>
+      <div className={clsx([style.sidebarWrapper, isDarkMode && style.dark])}>
         <ul className={style.sidebarMenu}>
           <li>
             <a
-              className={clsx(
+              className={clsx([
                 style.sidebarMenuLink,
-                isDarkMode && style.darkMenuLink
-              )}
+                isDarkMode && style.darkMenuLink,
+              ])}
               href="#section-experiencia"
               onClick={toogle}
             >
@@ -37,10 +39,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, isOpen, toogle }) => {
           </li>
           <li>
             <a
-              className={clsx(
+              className={clsx([
                 style.sidebarMenuLink,
-                isDarkMode && style.darkMenuLink
-              )}
+                isDarkMode && style.darkMenuLink,
+              ])}
               href="#section-projetos"
               onClick={toogle}
             >
@@ -49,10 +51,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, isOpen, toogle }) => {
           </li>
           <li>
             <a
-              className={clsx(
+              className={clsx([
                 style.sidebarMenuLink,
-                isDarkMode && style.darkMenuLink
-              )}
+                isDarkMode && style.darkMenuLink,
+              ])}
               href="#section-sobreMim"
               onClick={toogle}
             >
@@ -61,10 +63,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, isOpen, toogle }) => {
           </li>
           <li>
             <a
-              className={clsx(
+              className={clsx([
                 style.sidebarMenuLink,
-                isDarkMode && style.darkMenuLink
-              )}
+                isDarkMode && style.darkMenuLink,
+              ])}
               href="#section-contato"
               onClick={toogle}
             >

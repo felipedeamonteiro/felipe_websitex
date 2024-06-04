@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDeviceScreenSize } from '../../hooks/useDeviceScreenSize';
 import BulbSwitch from '../BulbSwitch';
-import style from './index.module.scss';
+import styles from './Navbar.module.scss';
 import { FaBars } from 'react-icons/fa';
 import NeonButtonReal from '../Buttons/NeonButtonReal';
 import clsx from 'clsx';
@@ -33,23 +33,21 @@ const Navbar: React.FC<NavbarProps> = ({
     window.addEventListener('scroll', changeNavBarBackground);
   }
 
-  console.log('style', style);
-
   return (
     <>
-      <nav className={clsx(style.navbar, !viewNavBar && style.transparent)}>
-        <div className={style.navbarContainer}>
+      <nav className={clsx([styles.navbar, !viewNavBar && styles.transparent])}>
+        <div className={styles.navbarContainer}>
           <a
-            className={clsx(style.navbarHome, darkMode && style.dark)}
+            className={clsx([styles.navbarHome, darkMode && styles.dark])}
             href="#section-home"
           >
             HOME
           </a>
 
           {!isMobile && !isTablet ? (
-            <ul className={style.navMenu}>
+            <ul className={styles.navMenu}>
               <BulbSwitch handleDarkMode={handleDarkMode} darkMode={darkMode} />
-              <li className={style.navItem}>
+              <li className={styles.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-experiencia"
@@ -59,14 +57,14 @@ const Navbar: React.FC<NavbarProps> = ({
                   </NeonButtonReal>
                 ) : (
                   <a
-                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    className={clsx([styles.navLinks, darkMode && styles.dark])}
                     href="#section-experiencia"
                   >
                     EXPERIÊNCIA
                   </a>
                 )}
               </li>
-              <li className={style.navItem}>
+              <li className={styles.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-projetos"
@@ -76,14 +74,14 @@ const Navbar: React.FC<NavbarProps> = ({
                   </NeonButtonReal>
                 ) : (
                   <a
-                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    className={clsx([styles.navLinks, darkMode && styles.dark])}
                     href="#section-projetos"
                   >
                     PROJETOS
                   </a>
                 )}
               </li>
-              <li className={style.navItem}>
+              <li className={styles.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-sobreMim"
@@ -93,14 +91,14 @@ const Navbar: React.FC<NavbarProps> = ({
                   </NeonButtonReal>
                 ) : (
                   <a
-                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    className={clsx([styles.navLinks, darkMode && styles.dark])}
                     href="#section-sobreMim"
                   >
                     SOBRE MIM
                   </a>
                 )}
               </li>
-              <li className={style.navItem}>
+              <li className={styles.navItem}>
                 {darkMode ? (
                   <NeonButtonReal
                     href="#section-contato"
@@ -110,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   </NeonButtonReal>
                 ) : (
                   <a
-                    className={clsx(style.navLinks, darkMode && style.dark)}
+                    className={clsx([styles.navLinks, darkMode && styles.dark])}
                     href="#section-contato"
                   >
                     CONTATO
@@ -119,10 +117,10 @@ const Navbar: React.FC<NavbarProps> = ({
               </li>
             </ul>
           ) : (
-            <div className={style.mobileContent}>
+            <div className={styles.mobileContent}>
               <BulbSwitch handleDarkMode={handleDarkMode} darkMode={darkMode} />
               <div
-                className={clsx(style.mobileIcon, darkMode && style.dark)}
+                className={clsx([styles.mobileIcon, darkMode && styles.dark])}
                 onClick={toogle}
               >
                 <FaBars />

@@ -1,8 +1,9 @@
 'use client';
 import Navbar from '@/components/Navbar';
-import Sidebar from '@/components/Sidebar';
+// import Sidebar from '@/components/Sidebar';
 import { useState } from 'react';
 import { useTheme } from '@/hooks/ThemeContext';
+// import IntroContainer from '@/components/IntroContainer';
 // import styles from './Home.module.scss';
 
 export default function Home(): JSX.Element {
@@ -15,15 +16,14 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toogle={toogleSidebar} isDarkMode={isDarkMode} />
+      {/* <Sidebar isOpen={isOpen} toogle={toogleSidebar} isDarkMode={isDarkMode} /> */}
       <Navbar
         toogle={toogleSidebar}
         handleDarkMode={toggleTheme}
         darkMode={isDarkMode}
       />
-      <h1>Aoba</h1>
-      {/* <IntroContainer darkMode={darkMode} />
-      <Experience darkMode={darkMode} />
+      {/* <IntroContainer darkMode={isDarkMode} /> */}
+      {/* <Experience darkMode={darkMode} />
       <Projects darkMode={darkMode} />
       <AboutMe darkMode={darkMode} />
       <ContactMe darkMode={darkMode} />

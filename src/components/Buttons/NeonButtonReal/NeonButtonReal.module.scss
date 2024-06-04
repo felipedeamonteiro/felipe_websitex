@@ -71,7 +71,7 @@
       color: #0EF462;
     }
 
-    :hover {
+    &:hover {
       color: #050801;
       &.button1 {
         background: #03E9F4;
@@ -108,7 +108,7 @@
       position: absolute;
       display: block;
 
-      :nth-child(1) {
+      &:nth-child(1) {
         top: 0;
         left: -100%;
         width: 100%;
@@ -130,7 +130,7 @@
         }
       }
 
-      :nth-child(2) {
+      &:nth-child(2) {
         top: -100%;
         right: 0;
         width: 2px;
@@ -153,7 +153,7 @@
         }
       }
 
-      :nth-child(3) {
+      &:nth-child(3) {
         bottom: 0;
         right: -100%;
         width: 100%;
@@ -175,7 +175,7 @@
         }
       }
 
-      :nth-child(4) {
+      &:nth-child(4) {
         bottom: -100%;
         left: 0;
         width: 2px;

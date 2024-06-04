@@ -13,7 +13,7 @@ const BulbSwitch: React.FC<BulbSwitchProps> = ({
 }) => {
   return (
     <div className={style.bulbContainer}>
-      <div className="switch">
+      <div className={style.switch}>
         <input
           type="checkbox"
           defaultChecked={darkMode}
@@ -21,15 +21,15 @@ const BulbSwitch: React.FC<BulbSwitchProps> = ({
           name="toggle"
         />
         <label htmlFor="toggle">
-          <i className="bulb">
-            <span className="bulb-center"></span>
-            <span className="filament-1"></span>
-            <span className="filament-2"></span>
-            <span className="sparks">
-              <i className="spark1"></i>
-              <i className="spark2"></i>
-              <i className="spark3"></i>
-              <i className="spark4"></i>
+          <i className={style.bulb}>
+            <span className={style.bulbCenter}></span>
+            <span className={style.filament1}></span>
+            <span className={style.filament2}></span>
+            <span className={style.sparks}>
+              <i className={style.spark1}></i>
+              <i className={style.spark2}></i>
+              <i className={style.spark3}></i>
+              <i className={style.spark4}></i>
             </span>
           </i>
         </label>

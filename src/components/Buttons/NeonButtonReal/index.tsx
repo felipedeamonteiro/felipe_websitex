@@ -16,11 +16,11 @@ const NeonButtonReal: React.FC<NeonButtonProps> = ({
 }) => {
   return (
     <div className={style.buttonContainer}>
-      <a className={buttonColorHex} href={href}>
-        <span className={buttonColorHex}></span>
-        <span className={buttonColorHex}></span>
-        <span className={buttonColorHex}></span>
-        <span className={buttonColorHex}></span>
+      <a className={style[buttonColorHex]} href={href}>
+        <span className={style[buttonColorHex]}></span>
+        <span className={style[buttonColorHex]}></span>
+        <span className={style[buttonColorHex]}></span>
+        <span className={style[buttonColorHex]}></span>
         {children}
       </a>
     </div>

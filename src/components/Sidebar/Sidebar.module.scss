@@ -20,12 +20,7 @@
     top: 0;
   }
 
-  .darkFatimes {
-    color: $darkSidebarContainerCloseIcon;
-  }
-  .lightFatimes {
-    color: $lightSidebarContainerCloseIcon;
-  }
+
 
   .iconDiv {
     position: absolute;
@@ -35,6 +30,13 @@
     font-size: 2rem;
     cursor: pointer;
     outline: none;
+
+    .darkFatimes {
+      color: $darkSidebarContainerCloseIcon;
+    }
+    .lightFatimes {
+      color: $lightSidebarContainerCloseIcon;
+    }
   }
 
 
@@ -44,45 +46,45 @@
     &.dark {
       color: $darkSidebarContainerWrapper;
     }
-  }
-}
-
-.sidebarMenu {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 80px);
-  text-align: center;
-  text-decoration: none;
-
-  li {
-    list-style-type: none;
-
-    .sidebarMenuLink {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      list-style: none;
-      transition: 0.2s ease-in-out;
+    .sidebarMenu {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 80px);
+      text-align: center;
       text-decoration: none;
-      color: $lightSidebarMenuLinkText;
-      cursor: pointer;
 
-      &:hover {
-        color: $lightSidebarMenuLinkTextHover;
-        transition: 0.2s ease-in-out;
-      }
+      li {
+        list-style-type: none;
 
-      &.darkMenuLink {
-        color: $darkSidebarMenuLinkText;
-
-        &:hover {
-          color: $darkSidebarMenuLinkTextHover;
+        .sidebarMenuLink {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          list-style: none;
           transition: 0.2s ease-in-out;
+          text-decoration: none;
+          color: $lightSidebarMenuLinkText;
+          cursor: pointer;
+
+          &:hover {
+            color: $lightSidebarMenuLinkTextHover;
+            transition: 0.2s ease-in-out;
+          }
+
+          &.darkMenuLink {
+            color: $darkSidebarMenuLinkText;
+
+            &:hover {
+              color: $darkSidebarMenuLinkTextHover;
+              transition: 0.2s ease-in-out;
+            }
+          }
         }
       }
     }
   }
 }
+
 
 

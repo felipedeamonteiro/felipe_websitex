@@ -4,6 +4,7 @@ import {
   Orbitron,
   Montserrat,
   Permanent_Marker,
+  Kaushan_Script,
 } from 'next/font/google';
 import style from './HomeLayout.module.scss';
 import { ThemeProvider } from '@/hooks/ThemeContext';
@@ -12,6 +13,12 @@ const permanentMarker = Permanent_Marker({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-permanent-marker',
+});
+
+const kaushanScript = Kaushan_Script({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-kaushan-script',
 });
 
 const orbitron700 = Orbitron({
@@ -45,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={style.initialBody}>
       <body
-        className={`${permanentMarker.variable} ${orbitron700.variable} ${montserrat400.variable} ${roboto.variable}`}
+        className={`${permanentMarker.variable} ${orbitron700.variable} ${montserrat400.variable} ${roboto.variable} ${kaushanScript.variable}`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
