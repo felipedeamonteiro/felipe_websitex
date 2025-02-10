@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './BulbSwitch.module.scss';
 
 interface BulbSwitchProps {
@@ -11,12 +11,22 @@ const BulbSwitch: React.FC<BulbSwitchProps> = ({
   handleDarkMode,
   darkMode,
 }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className={style.bulbContainer}>
       <div className={style.switch}>
         <input
           type="checkbox"
-          defaultChecked={darkMode}
+          checked={darkMode}
           onChange={handleDarkMode}
           name="toggle"
         />

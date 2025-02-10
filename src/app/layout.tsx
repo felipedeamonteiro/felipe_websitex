@@ -5,6 +5,7 @@ import {
   Montserrat,
   Permanent_Marker,
   Kaushan_Script,
+  Roboto_Slab,
 } from 'next/font/google';
 import style from './HomeLayout.module.scss';
 import { ThemeProvider } from '@/hooks/ThemeContext';
@@ -23,8 +24,8 @@ const kaushanScript = Kaushan_Script({
 
 const orbitron700 = Orbitron({
   subsets: ['latin'],
-  weight: '700',
-  variable: '--font-orbitron700',
+  weight: '500',
+  variable: '--font-orbitron500',
 });
 
 const montserrat400 = Montserrat({
@@ -37,6 +38,12 @@ const roboto = Roboto({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-roboto400',
+});
+
+const robotoSlab = Roboto_Slab({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-roboto-slab',
 });
 
 export const metadata: Metadata = {
@@ -52,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={style.initialBody}>
       <body
-        className={`${permanentMarker.variable} ${orbitron700.variable} ${montserrat400.variable} ${roboto.variable} ${kaushanScript.variable}`}
+        className={`${permanentMarker.variable} ${orbitron700.variable} ${montserrat400.variable} ${roboto.variable} ${kaushanScript.variable} ${robotoSlab.variable}`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

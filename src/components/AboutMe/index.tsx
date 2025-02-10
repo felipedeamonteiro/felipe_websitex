@@ -13,7 +13,7 @@ interface AboutMeProps {
 const AboutMe: React.FC<AboutMeProps> = ({ darkMode }) => {
   const [sobreMimInViewport, setSobreMimInViewport] = useState<boolean>(false);
 
-  const ref = useRef();
+  const ref = useRef(undefined);
   const inViewport = intersectionMethod(ref, '20px');
   useEffect(() => {
     if (inViewport) {
