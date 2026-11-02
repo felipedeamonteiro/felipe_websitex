@@ -1,30 +1,27 @@
-import React, { type ButtonHTMLAttributes } from 'react';
-import style from './NeonButtonReal.module.scss';
+import type { AnchorHTMLAttributes, CSSProperties, ReactNode } from 'react';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-
-interface NeonButtonProps extends ButtonProps {
-  children: string;
+interface NeonButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  children: ReactNode;
   buttonColorHex: string;
   href: string;
 }
 
-const NeonButtonReal: React.FC<NeonButtonProps> = ({
+export default function NeonButtonReal({
   children,
   buttonColorHex,
-  href,
-}) => {
-  return (
-    <div className={style.buttonContainer}>
-      <a className={style[buttonColorHex]} href={href}>
-        <span className={style[buttonColorHex]}></span>
-        <span className={style[buttonColorHex]}></span>
-        <span className={style[buttonColorHex]}></span>
-        <span className={style[buttonColorHex]}></span>
-        {children}
-      </a>
-    </div>
-  );
-};
+  style,
+  ...props
+}: NeonButtonProps) {
+  const neonStyle = {
+    '--neon-color': buttonColorHex,
+    ...style,
+  } as CSSProperties;
 
-export default NeonButtonReal;
+  return (
+    <a className="neon-link" style={neonStyle} {...props}>
+      <span aria-hidden="true" />
+      <span aria-hidden="true" />
+      {children}
+    </a>
+  );
+}

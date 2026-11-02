@@ -1,113 +1,129 @@
-import React, { useCallback, useState } from "react";
-import { useForm } from "react-hook-form";
-import * as Yup from "yup";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { contactSchema, type ContactFormData } from '../../schemas/contact';
+import Button from '../Buttons/Button';
+import ButtonNeon3 from '../Buttons/ButtonNeon3';
+import Input from '../Input';
+import TextArea from '../TextArea';
 
-import Button from "../Buttons/Button";
-import ButtonNeon3 from "../Buttons/ButtonNeon3";
-import Input from "../Input";
-import TextArea from "../TextArea";
-import { Container } from "./styles";
-
-type FormInputs = {
-  name: string;
-  email: string;
-  subject: string;
+interface Feedback {
+  type: 'success' | 'error';
   message: string;
-};
-
-interface ContactMeProps {
-  darkMode: boolean;
 }
 
-const ContactMe: React.FC<ContactMeProps> = ({ darkMode }) => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [subject, setSubject] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [submitted, setSubmitted] = useState(false);
-
+export default function ContactMe() {
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormInputs>();
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: '', email: '', subject: '', message: '' },
+  });
 
-  const handleFormSubmit = useCallback((data) => {
-    console.log("enviando email");
-    console.log("data", data);
+  const handleFormSubmit = async (data: ContactFormData): Promise<void> => {
+    setFeedback(null);
 
-    // fetch("/api/contact", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // }).then((res) => {
-    //   console.log("Response received");
-    //   if (res.status === 200) {
-    //     console.log("Response succeeded!");
-    //     setSubmitted(true);
-    //     setName("");
-    //     setEmail("");
-    //     setSubject("");
-    //     setMessage("");
-    //   }
-    // });
-  }, []);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(
+          result.message ?? 'Não foi possível enviar a mensagem.',
+        );
+      }
+
+      setFeedback({
+        type: 'success',
+        message: result.message ?? 'Mensagem enviada com sucesso!',
+      });
+      reset();
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Não foi possível enviar a mensagem. Tente novamente.',
+      });
+    }
+  };
 
   return (
-    <Container id="section-contato" darkMode={darkMode}>
-      <div className="text-center-row">
-        <h1 className="text-uppercase">Contato</h1>
-        <h3 className="text-muted">Deixe sua mensagem para batermos um papo</h3>
-      </div>
-      <div className="contact-form-div">
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
+    <section
+      id="section-contato"
+      className="bg-[var(--section-alternate)] px-5 py-24 text-[var(--text)] sm:px-8"
+    >
+      <div className="mx-auto max-w-2xl">
+        <header className="text-center">
+          <h2 className="font-display text-3xl font-bold sm:text-4xl">
+            Contato
+          </h2>
+          <p className="font-body mt-5 text-lg text-[var(--muted)] italic">
+            Deixe sua mensagem para batermos um papo
+          </p>
+        </header>
+        <form
+          noValidate
+          onSubmit={handleSubmit(handleFormSubmit)}
+          className="mt-12 space-y-5"
+        >
           <Input
-            darkMode={darkMode}
-            {...register("name")}
-            error={errors.name}
-            name="name"
             label="Nome"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            autoComplete="name"
+            error={errors.name}
+            {...register('name')}
           />
           <Input
-            darkMode={darkMode}
-            {...register("email")}
-            error={errors.email}
-            name="email"
             label="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            autoComplete="email"
+            error={errors.email}
+            {...register('email')}
           />
           <Input
-            darkMode={darkMode}
-            {...register("subject")}
-            error={errors.subject}
-            name="subject"
             label="Assunto"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            error={errors.subject}
+            {...register('subject')}
           />
           <TextArea
-            darkMode={darkMode}
-            {...register("message")}
-            name="message"
             label="Mensagem"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            error={errors.message}
+            {...register('message')}
           />
-          {darkMode ? (
-            <ButtonNeon3 type="submit">Enviar</ButtonNeon3>
-          ) : (
-            <Button type="submit">Enviar</Button>
-          )}
+          <div className="pt-2 dark:hidden">
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando...' : 'Enviar'}
+            </Button>
+          </div>
+          <div className="hidden pt-2 dark:block">
+            <ButtonNeon3 type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando...' : 'Enviar'}
+            </ButtonNeon3>
+          </div>
+          <div aria-live="polite" className="min-h-6">
+            {feedback && (
+              <p
+                className={`text-center text-sm font-bold ${
+                  feedback.type === 'success'
+                    ? 'text-green-700 dark:text-green-400'
+                    : 'text-red-600 dark:text-red-400'
+                }`}
+              >
+                {feedback.message}
+              </p>
+            )}
+          </div>
         </form>
       </div>
-    </Container>
+    </section>
   );
-};
-
-export default ContactMe;
+}

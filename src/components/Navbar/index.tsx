@@ -1,144 +1,87 @@
-'use client';
-import React, { useState, useCallback, useEffect } from 'react';
-import { useDeviceScreenSize } from '../../hooks/useDeviceScreenSize';
-import BulbSwitch from '../BulbSwitch';
-import styles from './Navbar.module.scss';
+import { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { navigationLinks } from '../../utils/navigation';
+import BulbSwitch from '../BulbSwitch';
 import NeonButtonReal from '../Buttons/NeonButtonReal';
-import clsx from 'clsx';
 
 interface NavbarProps {
-  toogle: () => void;
-  handleDarkMode: () => void;
+  isSidebarOpen: boolean;
+  onToggleSidebar: () => void;
+  onToggleTheme: () => void;
   darkMode: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  toogle,
-  handleDarkMode,
-  darkMode: isDarkMode,
-}) => {
-  const [viewNavBar, setViewNavBar] = useState<boolean>(false);
-
-  const { isMobile, isTablet } = useDeviceScreenSize();
-
-  const changeNavBarBackground = useCallback(() => {
-    if (!isMobile && !isTablet && window.scrollY >= 180) {
-      setViewNavBar(true);
-    } else if (!isMobile && !isTablet && window.scrollY < 180) {
-      setViewNavBar(false);
-    }
-  }, []);
+export default function Navbar({
+  isSidebarOpen,
+  onToggleSidebar,
+  onToggleTheme,
+  darkMode,
+}: NavbarProps) {
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNavBarBackground);
-    return () => {
-      window.removeEventListener('scroll', changeNavBarBackground);
-    };
-  }, [changeNavBarBackground]);
+    const handleScroll = (): void => setHasScrolled(window.scrollY > 32);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const showBackground = hasScrolled || isSidebarOpen;
 
   return (
     <nav
-      className={clsx([
-        styles.navbar,
-        !viewNavBar && styles.transparent,
-        isDarkMode && styles.dark,
-      ])}
+      aria-label="Navegação principal"
+      className={`sticky top-0 z-50 flex h-20 w-full justify-center transition-colors duration-300 ${
+        showBackground
+          ? 'bg-[var(--nav-background)] shadow-md'
+          : 'bg-transparent'
+      }`}
     >
-      <div className={styles.navbarContainer}>
+      <div className="flex h-full w-full max-w-[1350px] items-center justify-between px-5 sm:px-8">
         <a
-          className={clsx([styles.navbarHome, isDarkMode && styles.dark])}
           href="#section-home"
+          className="font-display rounded-sm text-xl font-bold text-[var(--accent)] transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 sm:text-2xl"
         >
           HOME
         </a>
 
-        {!isMobile && !isTablet ? (
-          <ul className={styles.navMenu}>
-            <BulbSwitch handleDarkMode={handleDarkMode} darkMode={isDarkMode} />
-            <li className={styles.navItem}>
-              {isDarkMode ? (
-                <NeonButtonReal
-                  href="#section-experiencia"
-                  buttonColorHex="button1"
-                >
-                  Experiência
+        <ul className="hidden items-center gap-1 lg:flex xl:gap-3">
+          <li className="mr-2 flex items-center">
+            <BulbSwitch onToggle={onToggleTheme} darkMode={darkMode} />
+          </li>
+          {navigationLinks.map((link) => (
+            <li key={link.href}>
+              {darkMode ? (
+                <NeonButtonReal href={link.href} buttonColorHex={link.color}>
+                  {link.label}
                 </NeonButtonReal>
               ) : (
                 <a
-                  className={clsx([styles.navLinks, isDarkMode && styles.dark])}
-                  href="#section-experiencia"
+                  href={link.href}
+                  className="rounded-sm px-3 py-2 text-sm font-bold text-[var(--accent)] uppercase transition-colors hover:text-red-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 xl:px-5 xl:text-base"
                 >
-                  EXPERIÊNCIA
+                  {link.label}
                 </a>
               )}
             </li>
-            <li className={styles.navItem}>
-              {isDarkMode ? (
-                <NeonButtonReal
-                  href="#section-projetos"
-                  buttonColorHex="button2"
-                >
-                  Projetos
-                </NeonButtonReal>
-              ) : (
-                <a
-                  className={clsx([styles.navLinks, isDarkMode && styles.dark])}
-                  href="#section-projetos"
-                >
-                  PROJETOS
-                </a>
-              )}
-            </li>
-            <li className={styles.navItem}>
-              {isDarkMode ? (
-                <NeonButtonReal
-                  href="#section-sobreMim"
-                  buttonColorHex="button3"
-                >
-                  Sobre Mim
-                </NeonButtonReal>
-              ) : (
-                <a
-                  className={clsx([styles.navLinks, isDarkMode && styles.dark])}
-                  href="#section-sobreMim"
-                >
-                  SOBRE MIM
-                </a>
-              )}
-            </li>
-            <li className={styles.navItem}>
-              {isDarkMode ? (
-                <NeonButtonReal
-                  href="#section-contato"
-                  buttonColorHex="button4"
-                >
-                  Contato
-                </NeonButtonReal>
-              ) : (
-                <a
-                  className={clsx([styles.navLinks, isDarkMode && styles.dark])}
-                  href="#section-contato"
-                >
-                  CONTATO
-                </a>
-              )}
-            </li>
-          </ul>
-        ) : (
-          <div className={styles.mobileContent}>
-            <BulbSwitch handleDarkMode={handleDarkMode} darkMode={isDarkMode} />
-            <div
-              className={clsx([styles.mobileIcon, isDarkMode && styles.dark])}
-              onClick={toogle}
-            >
-              <FaBars />
-            </div>
-          </div>
-        )}
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-4 lg:hidden">
+          <BulbSwitch onToggle={onToggleTheme} darkMode={darkMode} />
+          <button
+            type="button"
+            aria-label={isSidebarOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-controls="mobile-navigation"
+            aria-expanded={isSidebarOpen}
+            onClick={onToggleSidebar}
+            className="flex h-11 w-11 items-center justify-center rounded-md text-2xl text-[var(--accent)] transition hover:bg-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+          >
+            <FaBars aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

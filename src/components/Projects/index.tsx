@@ -1,65 +1,74 @@
-import React from 'react';
-
-import { Container } from './styles';
+import CaosImg from '@public/caos_focado_test.png';
+import CodeMinerImg from '@public/code_miner.png';
+import ContaSimplesImg from '@public/conta_simples.jpeg';
+import CredereImg from '@public/credere_test.png';
+import VenturusImg from '@public/venturus_test.png';
 import Card3D from '../Card3D';
-import CaosImg from '@/public/caos_focado_test.png';
-import CredereImg from '@/public/credere_test.png';
-import VenturusImg from '@/public/venturus_test.png';
-import CodeMinerImg from '@/public/code_miner.png';
-import ContaSimplesImg from '@/public/conta_simples.jpeg';
 
-interface ProjectsProps {
-  darkMode: boolean;
-}
+const projects = [
+  {
+    imgSrc: CaosImg,
+    imgAlt: 'Imagem do teste Caos Focado',
+    projectHref:
+      'https://caos-focado-frontend-test-git-master.felipedeamonteiro.vercel.app/',
+    backCardTitle: 'Teste para Dev Frontend - Caos Focado',
+    backCardDescription:
+      'O projeto se baseia em construir uma listagem de clínicas previamente fornecidas e um formulário para adicionar novas clínicas. A tarefa incluía seguir o layout, integrar a API dos Correios e implementar ordenação.',
+  },
+  {
+    imgSrc: CredereImg,
+    imgAlt: 'Imagem do teste da Credere',
+    projectHref: 'https://credere-frontend-test.vercel.app/',
+    backCardTitle: 'Teste para Dev Backend - Credere',
+    backCardDescription:
+      'Projeto full-stack com backend hospedado na Digital Ocean e frontend na Vercel. A aplicação controla uma sonda que se locomove em um plano 2D.',
+  },
+  {
+    imgSrc: VenturusImg,
+    imgAlt: 'Imagem do teste da Venturus',
+    projectHref: 'https://venturus-frontend-test-2020.vercel.app/',
+    backCardTitle: 'Teste para Dev Frontend - Venturus',
+    backCardDescription:
+      'Dashboard inspirada no Cartola FC para criar times personalizados de futebol usando uma API externa. O layout complexo tornou este um dos trabalhos mais desafiadores que desenvolvi.',
+  },
+  {
+    imgSrc: CodeMinerImg,
+    imgAlt: 'Imagem do teste Code Miner',
+    backCardTitle: 'Teste para Dev Full-Stack - Code Miner',
+    backCardDescription: 'Ainda em construção.',
+  },
+  {
+    imgSrc: ContaSimplesImg,
+    imgAlt: 'Imagem do teste Conta Simples',
+    projectHref:
+      'https://caos-focado-frontend-test-git-master.felipedeamonteiro.vercel.app/',
+    backCardTitle: 'Teste para Dev Full-Stack - Conta Simples',
+    backCardDescription: 'Backend pronto, com o frontend ainda em construção.',
+  },
+];
 
-const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
+export default function Projects() {
   return (
-    <Container id='section-projetos' darkMode={darkMode}>
-      <div className='text-center-row'>
-        <h1>Projetos</h1>
-        <h3>Projetos de testes de processos seletivos de empresas</h3>
+    <section
+      id="section-projetos"
+      className="bg-[var(--section-alternate)] px-5 py-24 text-[var(--text)] sm:px-8"
+    >
+      <div className="mx-auto max-w-7xl">
+        <header className="text-center">
+          <h2 className="font-display text-3xl font-bold sm:text-4xl">
+            Projetos
+          </h2>
+          <p className="font-body mt-5 text-lg text-[var(--muted)] italic">
+            Projetos de testes de processos seletivos de empresas
+          </p>
+        </header>
+        <div className="mt-14 grid justify-items-center gap-8 sm:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project) => (
+            <Card3D key={project.backCardTitle} {...project} />
+          ))}
+        </div>
+        <div className="mt-16 h-1 w-full bg-slate-300 dark:bg-cyan-300 dark:shadow-[0_0_16px_#8140f7]" />
       </div>
-
-      <div className='cards-wrapper'>
-        <Card3D
-          imgSrc={CaosImg}
-          imgAlt='Imagem do Teste Caos Focado'
-          projectHref='https://caos-focado-frontend-test-git-master.felipedeamonteiro.vercel.app/'
-          backCardTitle='Teste para Dev Frontend - Caos Focado'
-          backCardDescritption='O projeto se baseia em contruir uma listagem de clínicas, previamente dadas e também de um formulário para adicionar mais clínicas. Tinha a tarefa de seguir o layout dado, trabalhar com a Api dos correios e ordenação.'
-        />
-        <Card3D
-          imgSrc={CredereImg}
-          imgAlt='Imagem do Teste da Credere'
-          projectHref='https://credere-frontend-test.vercel.app/'
-          backCardTitle='Teste para Dev Backend - Credere'
-          backCardDescritption="O Projeto é FullStack, possui um backend hospedado na Digital Ocean e o Front na Vercel, onde temos uma 'sonda' que pode se locomover num plano 2D."
-        />
-        <Card3D
-          imgSrc={VenturusImg}
-          imgAlt='Imagem do teste da Venturus'
-          projectHref='https://venturus-frontend-test-2020.vercel.app/'
-          backCardTitle='Teste para Dev Frontend - Venturus'
-          backCardDescritption='Neste projeto toda aplicação está somente no frontend. A ideia era criar uma dashboard nos moldes do CartolaFC onde se criava times personalizados de futebol usando uma API externa. O layout é bem complexo e é um dos trabalhos mais desafiadores que eu fiz.'
-        />
-        <Card3D
-          imgSrc={CodeMinerImg}
-          imgAlt='Imagem do Teste Caos Focado'
-          aTagStyle={true}
-          backCardTitle='Teste para Dev FullStack - Code Miner'
-          backCardDescritption='Ainda em construção...'
-        />
-        <Card3D
-          imgSrc={ContaSimplesImg}
-          imgAlt='Imagem do Teste da Credere'
-          projectHref='https://caos-focado-frontend-test-git-master.felipedeamonteiro.vercel.app/'
-          backCardTitle='Teste para Dev FullStack - Conta Simples'
-          backCardDescritption='Backend pronto, mas ainda falta o front. Em construção...'
-        />
-      </div>
-      <div className='animation-div' />
-    </Container>
+    </section>
   );
-};
-
-export default Projects;
+}

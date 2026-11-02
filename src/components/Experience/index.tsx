@@ -1,579 +1,175 @@
-import React, { useCallback, useState } from 'react';
+import Image, { type StaticImageData } from 'next/image';
+import { useRef } from 'react';
+import AprendizImg from '@public/AprendizDigital.png';
+import FormulaImg from '@public/FormulaSAE.png';
+import LdemImg from '@public/LDEM.jpg';
+import LetrusImg from '@public/letrus.png';
+import MeuColegioImg from '@public/MeuColegio.png';
+import NubankImg from '@public/Nubank.jpg';
+import ObjectEdgeLogo from '@public/object-edge-squarelogo.png';
+import SiemensImg from '@public/Siemens.jpg';
+import useInView from '../../utils/intersectionMethod';
 
-import { Container } from './styles';
-import LetrusImg from '@/public/letrus.png';
-import AprendizImg from '@/public/AprendizDigital.png';
-import FormulaImg from '@/public/FormulaSAE.png';
-import LdemImg from '@/public/LDEM.jpg';
-import MeuColegioImg from '@/public/MeuColegio.png';
-import NubankImg from '@/public/Nubank.jpg';
-import SiemensImg from '@/public/Siemens.jpg';
-import ObjectEdgeLogo from '@/public/object-edge-squarelogo.png';
-import { useDeviceScreenSize } from '../../hooks/useDeviceScreenSize';
-import Image from 'next/image';
-
-interface ExperienceProps {
-  darkMode: boolean;
+interface ExperienceEntry {
+  period: string;
+  company: string;
+  description: string;
+  image: StaticImageData;
+  imageAlt: string;
 }
 
-const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
-  const [viewCircleBorder1, setViewCircleBorder1] = useState<boolean>(false);
-  const [viewText1, setViewText1] = useState<boolean>(false);
-  const [viewCircleBorder2, setViewCircleBorder2] = useState<boolean>(false);
-  const [viewText2, setViewText2] = useState<boolean>(false);
-  const [viewCircleBorder3, setViewCircleBorder3] = useState<boolean>(false);
-  const [viewText3, setViewText3] = useState<boolean>(false);
-  const [viewCircleBorder4, setViewCircleBorder4] = useState<boolean>(false);
-  const [viewText4, setViewText4] = useState<boolean>(false);
-  const [viewCircleBorder5, setViewCircleBorder5] = useState<boolean>(false);
-  const [viewText5, setViewText5] = useState<boolean>(false);
-  const [viewCircleBorder6, setViewCircleBorder6] = useState<boolean>(false);
-  const [viewText6, setViewText6] = useState<boolean>(false);
-  const [viewCircleBorder7, setViewCircleBorder7] = useState<boolean>(false);
-  const [viewText7, setViewText7] = useState<boolean>(false);
-  const [viewCircleBorder8, setViewCircleBorder8] = useState<boolean>(false);
-  const [viewText8, setViewText8] = useState<boolean>(false);
-  const [viewCircleBorder9, setViewCircleBorder9] = useState<boolean>(false);
-  const [viewText9, setViewText9] = useState<boolean>(false);
+const experiences: ExperienceEntry[] = [
+  {
+    period: '1 - De 2009 a 2010',
+    company: 'Fórmula SAE Unicamp',
+    description:
+      'Fiz parte da divisão de freios, onde projetamos todo o sistema de freios do carro F-2009. Nos classificamos em 5º lugar.',
+    image: FormulaImg,
+    imageAlt: 'Fórmula SAE Unicamp',
+  },
+  {
+    period: '2 - De 2011 a 2013',
+    company: 'Iniciação científica no antigo LDEM Unicamp',
+    description:
+      'Iniciação científica na área de vibrações mecânicas com bolsa do CNPq. Estudei fenômenos vibratórios em engrenagens planetárias de transmissões automáticas.',
+    image: LdemImg,
+    imageAlt: 'LDEM',
+  },
+  {
+    period: '3 - 2º semestre de 2013',
+    company: 'Meu Colégio',
+    description: 'Trabalhei como professor do colégio técnico noturno.',
+    image: MeuColegioImg,
+    imageAlt: 'Meu Colégio',
+  },
+  {
+    period: '4 - De junho a dezembro de 2014',
+    company: 'Siemens Industry Software',
+    description:
+      'Estágio na área de softwares LMS, atual Simcenter, que atuam na simulação e nos testes de projetos.',
+    image: SiemensImg,
+    imageAlt: 'Siemens',
+  },
+  {
+    period: '5 - De janeiro de 2015 a março de 2016',
+    company: 'Siemens Industry Software',
+    description:
+      'Trabalhei com pré e pós-venda técnica do software Preactor, que cuida da programação e do planejamento do processo de produção de indústrias.',
+    image: SiemensImg,
+    imageAlt: 'Siemens',
+  },
+  {
+    period: '6 - De março a junho de 2017',
+    company: 'Nubank',
+    description:
+      'Atuei como analista de relacionamento ao cliente nos setores de Bills e Chargeback.',
+    image: NubankImg,
+    imageAlt: 'Nubank',
+  },
+  {
+    period: '7 - De junho de 2016 até outubro de 2019',
+    company: 'Aprendiz Digital',
+    description:
+      'Fui fundador desta startup da área da educação. Ela oferecia serviços de aulas particulares de exatas e programação.',
+    image: AprendizImg,
+    imageAlt: 'Aprendiz Digital',
+  },
+  {
+    period: '8 - De janeiro a setembro de 2020',
+    company: 'Letrus',
+    description:
+      'Atuei como desenvolvedor frontend nos diversos projetos da empresa, com design system, integração com HubSpot, resolução de bugs, manutenção e atualização do código e participação na criação de um backoffice.',
+    image: LetrusImg,
+    imageAlt: 'Letrus',
+  },
+  {
+    period: '9 - Desde fevereiro de 2021',
+    company: 'Object Edge',
+    description:
+      'Desenvolvedor frontend React em projetos internacionais, lidando com clientes e colegas de trabalho espalhados pelo mundo, com foco no desenvolvimento e na manutenção de plataformas de e-commerce.',
+    image: ObjectEdgeLogo,
+    imageAlt: 'Object Edge',
+  },
+];
 
-  const { isMobile, isTablet } = useDeviceScreenSize();
-
-  const changeBorderLines = useCallback(() => {
-    if (isMobile) {
-      if (window.scrollY >= 769) {
-        setViewCircleBorder1(true);
-        setViewText1(true);
-      } else {
-        setViewCircleBorder1(false);
-        setViewText1(false);
-      }
-      if (window.scrollY >= 987) {
-        setViewCircleBorder2(true);
-        setViewText2(true);
-      } else {
-        setViewCircleBorder2(false);
-        setViewText2(false);
-      }
-      if (window.scrollY >= 1511) {
-        setViewCircleBorder3(true);
-        setViewText3(true);
-      } else {
-        setViewCircleBorder3(false);
-        setViewText3(false);
-      }
-      if (window.scrollY >= 1976) {
-        setViewCircleBorder4(true);
-        setViewText4(true);
-      } else {
-        setViewCircleBorder4(false);
-        setViewText4(false);
-      }
-      if (window.scrollY >= 2541) {
-        setViewCircleBorder5(true);
-        setViewText5(true);
-      } else {
-        setViewCircleBorder5(false);
-        setViewText5(false);
-      }
-      if (window.scrollY >= 3012) {
-        setViewCircleBorder6(true);
-        setViewText6(true);
-      } else {
-        setViewCircleBorder6(false);
-        setViewText6(false);
-      }
-      if (window.scrollY >= 3377) {
-        setViewCircleBorder7(true);
-        setViewText7(true);
-      } else {
-        setViewCircleBorder7(false);
-        setViewText7(false);
-      }
-      if (window.scrollY >= 3948) {
-        setViewCircleBorder8(true);
-        setViewText8(true);
-      } else {
-        setViewCircleBorder8(false);
-        setViewText8(false);
-      }
-      if (window.scrollY >= 4450) {
-        setViewCircleBorder9(true);
-        setViewText9(true);
-      } else {
-        setViewCircleBorder9(false);
-        setViewText9(false);
-      }
-    } else if (isTablet) {
-      if (window.scrollY >= 669) {
-        setViewCircleBorder1(true);
-        setViewText1(true);
-      } else {
-        setViewCircleBorder1(false);
-        setViewText1(false);
-      }
-      if (window.scrollY >= 787) {
-        setViewCircleBorder2(true);
-        setViewText2(true);
-      } else {
-        setViewCircleBorder2(false);
-        setViewText2(false);
-      }
-      if (window.scrollY >= 1011) {
-        setViewCircleBorder3(true);
-        setViewText3(true);
-      } else {
-        setViewCircleBorder3(false);
-        setViewText3(false);
-      }
-      if (window.scrollY >= 1376) {
-        setViewCircleBorder4(true);
-        setViewText4(true);
-      } else {
-        setViewCircleBorder4(false);
-        setViewText4(false);
-      }
-      if (window.scrollY >= 1641) {
-        setViewCircleBorder5(true);
-        setViewText5(true);
-      } else {
-        setViewCircleBorder5(false);
-        setViewText5(false);
-      }
-      if (window.scrollY >= 1912) {
-        setViewCircleBorder6(true);
-        setViewText6(true);
-      } else {
-        setViewCircleBorder6(false);
-        setViewText6(false);
-      }
-      if (window.scrollY >= 2277) {
-        setViewCircleBorder7(true);
-        setViewText7(true);
-      } else {
-        setViewCircleBorder7(false);
-        setViewText7(false);
-      }
-      if (window.scrollY >= 2548) {
-        setViewCircleBorder8(true);
-        setViewText8(true);
-      } else {
-        setViewCircleBorder8(false);
-        setViewText8(false);
-      }
-      if (window.scrollY >= 2850) {
-        setViewCircleBorder9(true);
-        setViewText9(true);
-      } else {
-        setViewCircleBorder9(false);
-        setViewText9(false);
-      }
-    } else {
-      if (window.scrollY >= 669) {
-        setViewCircleBorder1(true);
-        setViewText1(true);
-      } else {
-        setViewCircleBorder1(false);
-        setViewText1(false);
-      }
-      if (window.scrollY >= 987) {
-        setViewCircleBorder2(true);
-        setViewText2(true);
-      } else {
-        setViewCircleBorder2(false);
-        setViewText2(false);
-      }
-      if (window.scrollY >= 1411) {
-        setViewCircleBorder3(true);
-        setViewText3(true);
-      } else {
-        setViewCircleBorder3(false);
-        setViewText3(false);
-      }
-      if (window.scrollY >= 1676) {
-        setViewCircleBorder4(true);
-        setViewText4(true);
-      } else {
-        setViewCircleBorder4(false);
-        setViewText4(false);
-      }
-      if (window.scrollY >= 1941) {
-        setViewCircleBorder5(true);
-        setViewText5(true);
-      } else {
-        setViewCircleBorder5(false);
-        setViewText5(false);
-      }
-      if (window.scrollY >= 2312) {
-        setViewCircleBorder6(true);
-        setViewText6(true);
-      } else {
-        setViewCircleBorder6(false);
-        setViewText6(false);
-      }
-      if (window.scrollY >= 2577) {
-        setViewCircleBorder7(true);
-        setViewText7(true);
-      } else {
-        setViewCircleBorder7(false);
-        setViewText7(false);
-      }
-      if (window.scrollY >= 2848) {
-        setViewCircleBorder8(true);
-        setViewText8(true);
-      } else {
-        setViewCircleBorder8(false);
-        setViewText8(false);
-      }
-      if (window.scrollY >= 3150) {
-        setViewCircleBorder9(true);
-        setViewText9(true);
-      } else {
-        setViewCircleBorder9(false);
-        setViewText9(false);
-      }
-    }
-  }, []);
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', changeBorderLines);
-  }
+function TimelineEntry({
+  experience,
+  index,
+}: {
+  experience: ExperienceEntry;
+  index: number;
+}) {
+  const entryRef = useRef<HTMLLIElement>(null);
+  const inView = useInView(entryRef, '-10% 0px');
+  const isEven = index % 2 === 1;
 
   return (
-    <Container id='section-experiencia' darkMode={darkMode}>
-      <div className='container'>
-        <div className='text-center-row'>
-          <h2 className='text-uppercase'>Experiência Profissional</h2>
-          <h3 className='text-muted'>Etapas da carreira profissional</h3>
-        </div>
-        <div className='row'>
-          <ul className='timeline'>
-            <li>
-              <div
-                className={
-                  viewCircleBorder1
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={FormulaImg} alt='Fórmula SAE Unicamp' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText1
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>1 - DE 2009 A 2010</h4>
-                  <h4 className='subheading'>FÓRMULA SAE UNICAMP</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText1 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    FIZ PARTE DA DIVISÃO DE FREIOS, ONDE PROJETAMOS TODO O
-                    SISTEMA DE FREIOS DO CARRO F-2009. NOS CLASSIFICAMOS EM 5º
-                    LUGAR.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className='timeline-inverted'>
-              <div
-                className={
-                  viewCircleBorder2
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={LdemImg} alt='LDEM logo' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText2
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>2 - DE 2011 A 2013</h4>
-                  <h4 className='subheading'>
-                    INICIAÇÃO CIENTÍFICA NO ANTIGO LDEM UNICAMP
-                  </h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText2 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    INICIÇÃO CIENTÍFICA NA ÁREA DE VIBRAÇÕES MECÂNICAS COM BOLSA
-                    DO CNPQ. ESTUDEI FENÔMENOS VIBRATÓRIOS EM ENGRENAGENS
-                    PLANETÁRIAS DE TRANSMISSÕES AUTOMÁTICAS.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div
-                className={
-                  viewCircleBorder3
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={MeuColegioImg} alt='Meu colegio logo' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText3
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>3 - 2º SEMESTRE DE 2013</h4>
-                  <h4 className='subheading'>MEU COLÉGIO</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText3 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    TRABALHEI COMO PROFESSOR DO COLÉGIO TÉCNICO NOTURNO.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className='timeline-inverted'>
-              <div
-                className={
-                  viewCircleBorder4
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={SiemensImg} alt='Siemens' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText4
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>4 - DE JUNHO A DEZEMBRO DE 2014</h4>
-                  <h4 className='subheading'>SIEMENS INDUSTRY SOFTWARE</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText4 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    ESTÁGIO NA PARTE DE SOFTWARES LMS (ATUAL SIMCENTER) QUE
-                    ATUAM NA SIMULAÇÃO E TESTES DE PROJETOS.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div
-                className={
-                  viewCircleBorder5
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={SiemensImg} alt='Siemens' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText5
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>5 - DE JANEIRO DE 2015 A MARÇO DE 2016</h4>
-                  <h4 className='subheading'>SIEMENS INDUSTRY SOFTWARE</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText5 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    TRABALHEI COM PRÉ E PÓS VENDA TÉCNICA DO SOFTWARE PREACTOR,
-                    QUE CUIDA DA PROGRAMAÇÃO E PLANEJAMENTO DO PROCESSO DE
-                    PRODUÇÃO DE INDÚSTRIAS.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className='timeline-inverted'>
-              <div
-                className={
-                  viewCircleBorder6
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={NubankImg} alt='Nubank' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText6
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>6 - DE MARÇO A JUNHO DE 2017</h4>
-                  <h4 className='subheading'>NUBANK</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText6 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    ATUEI COMO ANALISTA DE RELACIONAMENTO AO CLIENTE NOS SETORES
-                    DE BILLS E CHARGEBACK.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div
-                className={
-                  viewCircleBorder7
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={AprendizImg} alt='Aprendiz Digital' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText7
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>7 - DE JUNHO DE 2016 ATÉ OUTUBRO DE 2019</h4>
-                  <h4 className='subheading'>APRENDIZ DIGITAL</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText7 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    FUI FUNDADOR DESTA STARTUP DA ÁREA DA EDUCAÇÃO. ELA OFERECIA
-                    SERVIÇOS DE AULAS PARTICULARES DE EXATAS E PROGRAMAÇÃO.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className='timeline-inverted'>
-              <div
-                className={
-                  viewCircleBorder8
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image alt='Letrus' src={LetrusImg} />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText8
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>8 - DE JANEIRO A SETEMBRO DE 2020</h4>
-                  <h4 className='subheading'>LETRUS</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText8 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    ATUEI COMO DESENVOLVEDOR FRONTEND NOS DIVERSOS PROJETOS DA
-                    EMPRESA. ATUEI COM DESIGN SYSTEM, INTEGRAÇÃO COM HUBSPOT,
-                    RESOLUÇÃO DE BUGS, MANUTENÇÃO/ATUALIZAÇÃO DO CÓDIGO E
-                    PARTICIPAÇÃO NA CRIAÇÃO DE UM BACKOFFICE.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div
-                className={
-                  viewCircleBorder9
-                    ? 'timeline-image circleActive'
-                    : 'timeline-image'
-                }
-              >
-                <Image src={ObjectEdgeLogo} alt='Object Edge' />
-              </div>
-              <div className='timeline-panel'>
-                <div
-                  className={
-                    viewText9
-                      ? 'timeline-heading activeText'
-                      : 'timeline-heading'
-                  }
-                >
-                  <h4>9 - DE FEVEREIRO DE 2021 ATÉ AGORA</h4>
-                  <h4 className='subheading'>OBJECT EDGE</h4>
-                </div>
-                <div className='timeline-body'>
-                  <p
-                    className={
-                      viewText9 ? 'text-muted activeText' : 'text-muted'
-                    }
-                  >
-                    DESENVOLVEDOR FRONTEND REACT. ATUO EM PROJETOS
-                    INTERNACIONAIS, LIDANDO COM CLIENTES E COLEGAS DE TRABALHO
-                    ESPALHADOS PELO MUNDO. DESENVOLVENDO E FAZENDO MANUTENÇÃO
-                    PRINCIPALMENTE DE PLATAFORMAS DE E-COMMERCE.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            {/* <li className="timeline-inverted">
-                  <div className="timeline-image">
-                    <h4>READY FOR
-                    <br/>NEW
-                    <br/>CHALLENGES!</h4>
-                  </div>
-                </li> */}
-          </ul>
-        </div>
+    <li
+      ref={entryRef}
+      className="relative mb-14 last:mb-0 md:grid md:grid-cols-2 md:gap-24"
+    >
+      <div
+        className={`absolute top-0 left-0 z-10 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-4 bg-white transition-all duration-500 md:left-1/2 md:h-24 md:w-24 md:-translate-x-1/2 ${
+          inView
+            ? 'blur-0 border-cyan-400 grayscale-0'
+            : 'border-slate-500 dark:blur-[2px] dark:grayscale'
+        }`}
+      >
+        <Image
+          src={experience.image}
+          alt={experience.imageAlt}
+          className="h-full w-full object-contain"
+        />
       </div>
-      <div className='animation-div' />
-    </Container>
+      <div
+        className={`ml-24 rounded-xl border border-slate-300/60 bg-white/65 p-5 shadow-sm transition-all duration-500 md:ml-0 md:p-6 dark:border-cyan-900 dark:bg-white/5 ${
+          isEven ? 'md:col-start-2' : 'md:col-start-1 md:text-right'
+        } ${
+          inView
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-4 opacity-70 md:opacity-100'
+        }`}
+      >
+        <p className="text-xs font-bold tracking-wide text-[var(--muted)] uppercase sm:text-sm">
+          {experience.period}
+        </p>
+        <h3 className="font-display mt-2 text-lg leading-7 font-bold sm:text-xl">
+          {experience.company}
+        </h3>
+        <p className="font-body mt-4 text-base leading-7 text-slate-700 dark:text-slate-200">
+          {experience.description}
+        </p>
+      </div>
+    </li>
   );
-};
+}
 
-export default Experience;
+export default function Experience() {
+  return (
+    <section
+      id="section-experiencia"
+      className="bg-[var(--section-background)] px-5 py-24 text-[var(--text)] sm:px-8"
+    >
+      <div className="mx-auto max-w-7xl">
+        <header className="text-center">
+          <h2 className="font-display text-3xl leading-tight font-bold sm:text-4xl">
+            Experiência Profissional
+          </h2>
+          <p className="font-body mt-5 text-lg text-[var(--muted)] italic">
+            Etapas da carreira profissional
+          </p>
+        </header>
+        <ol className="relative mx-auto mt-16 max-w-6xl before:absolute before:top-0 before:bottom-0 before:left-8 before:w-0.5 before:bg-slate-400 before:content-[''] md:before:left-1/2 dark:before:bg-cyan-400">
+          {experiences.map((experience, index) => (
+            <TimelineEntry
+              key={`${experience.period}-${experience.company}`}
+              experience={experience}
+              index={index}
+            />
+          ))}
+        </ol>
+        <div className="mt-16 h-1 w-full bg-slate-300 dark:bg-cyan-300 dark:shadow-[0_0_16px_#03e9f4]" />
+      </div>
+    </section>
+  );
+}

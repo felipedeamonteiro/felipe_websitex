@@ -1,35 +1,23 @@
-// import { useState, useEffect } from 'react'
+import { useEffect, useState, type RefObject } from 'react';
 
-// /**
-//  * https://www.webtips.dev/webtips/react-hooks/element-in-viewport
-//  */
+export default function useInView<T extends Element>(
+  element: RefObject<T | null>,
+  rootMargin = '0px',
+): boolean {
+  const [isVisible, setIsVisible] = useState(false);
 
-// const intersectionMethod = (element: unknown, rootMargin: string) => {
-//   const [isVisible, setIsVisible] = useState<boolean>(false)
+  useEffect(() => {
+    const currentElement = element.current;
+    if (!currentElement) return;
 
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         setIsVisible(entry.isIntersecting)
-//         /**
-//          * This is to set the observer only once
-//          */
-//         // if (entry.isIntersecting) {
-//         //     setIsVisible(entry.isIntersecting);
-//         //     observer.unobserve(element.current);
-//         // }
-//       },
-//       { rootMargin }
-//     )
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin, threshold: 0.15 },
+    );
 
-//     element.current && observer.observe(element.current)
+    observer.observe(currentElement);
+    return () => observer.disconnect();
+  }, [element, rootMargin]);
 
-//     return () => {
-//       observer.unobserve(element.current)
-//     }
-//   }, [])
-
-//   return isVisible
-// }
-
-// export default intersectionMethod
+  return isVisible;
+}

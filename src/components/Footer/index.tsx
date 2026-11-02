@@ -1,17 +1,7 @@
-import React from "react";
-
-import { Container } from "./styles";
-
-interface FooterProps {
-  darkMode: boolean;
-}
-
-const Footer: React.FC<FooterProps> = ({ darkMode }) => {
+export default function Footer() {
   return (
-    <Container darkMode={darkMode}>
-      Copyright &copy; Felipe de Alcântara Monteiro - 2022
-    </Container>
+    <footer className="flex min-h-16 w-full items-center justify-center bg-[var(--footer-background)] px-6 py-4 text-center text-sm text-[var(--text)] sm:text-base">
+      Copyright &copy; Felipe de Alcântara Monteiro - {new Date().getFullYear()}
+    </footer>
   );
-};
-
-export default Footer;
+}

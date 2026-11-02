@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Felipe Monteiro — Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js, React, TypeScript, Tailwind CSS, React Hook Form, and Zod.
 
-First, run the development server:
+## Requirements
+
+- Node.js 24 or newer (see `.nvmrc`)
+- npm 11 or newer
+
+## Getting started
 
 ```bash
+nvm use
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3003](http://localhost:3003).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The contact form needs these values in `.env.local`:
 
-## Learn More
+- `USER_MAIL`: Gmail address used by Nodemailer
+- `MAIL_PASSWORD`: Gmail app password (not the account password)
+- `DESTINATION_MAIL`: address that receives contact messages
 
-To learn more about Next.js, take a look at the following resources:
+Environment files are ignored by Git. Do not commit credentials.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm run dev           # Development server on port 3003
+npm run build         # Production build
+npm run start         # Production server on port 3003
+npm run lint          # ESLint
+npm run typecheck     # Strict TypeScript checks
+npm run format        # Format files with Prettier
+npm run format:check  # Verify formatting
+```
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js 16 (Pages Router)
+- React 19 and TypeScript 5
+- Tailwind CSS 4 with class-based dark mode
+- Zod validation shared by the contact form and API
+- Nodemailer for contact delivery
+- ESLint 9 and Prettier with Tailwind class sorting
