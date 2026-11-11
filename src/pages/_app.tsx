@@ -1,7 +1,14 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Orbitron, Raleway, Roboto_Slab } from 'next/font/google';
+import {
+  JetBrains_Mono,
+  Noto_Sans_JP,
+  Orbitron,
+  Raleway,
+  Roboto_Slab,
+} from 'next/font/google';
 import { useCallback, useEffect, useState } from 'react';
+import DesignSwitcher from '../components/shared/DesignSwitcher';
 import '../styles/globals.css';
 
 const orbitron = Orbitron({
@@ -20,6 +27,19 @@ const robotoSlab = Roboto_Slab({
   subsets: ['latin'],
   variable: '--font-roboto-slab',
   display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  display: 'swap',
+});
+
+// Japanese glyphs are served through unicode-range chunks, so nothing is preloaded.
+const notoSansJp = Noto_Sans_JP({
+  variable: '--font-noto-jp',
+  display: 'swap',
+  preload: false,
 });
 
 type Theme = 'light' | 'dark';
@@ -70,7 +90,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div
-      className={`${orbitron.variable} ${raleway.variable} ${robotoSlab.variable} min-h-screen font-sans`}
+      className={`${orbitron.variable} ${raleway.variable} ${robotoSlab.variable} ${jetbrainsMono.variable} ${notoSansJp.variable} min-h-screen font-sans`}
     >
       <Head>
         <title>Felipe de Alcântara Monteiro | Engenheiro Full-Stack</title>
@@ -85,6 +105,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         toggleTheme={toggleTheme}
         theme={{ title: theme }}
       />
+      <DesignSwitcher />
     </div>
   );
 }

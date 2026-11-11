@@ -21,6 +21,8 @@ export default function NeonButtonReal({
     <a className="neon-link" style={neonStyle} {...props}>
       <span aria-hidden="true" />
       <span aria-hidden="true" />
+      <span aria-hidden="true" />
+      <span aria-hidden="true" />
       {children}
     </a>
   );

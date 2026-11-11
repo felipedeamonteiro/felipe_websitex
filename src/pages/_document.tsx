@@ -10,7 +10,7 @@ const themeScript = `
 
 export default function Document() {
   return (
-    <Html lang="pt-BR" suppressHydrationWarning>
+    <Html suppressHydrationWarning>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

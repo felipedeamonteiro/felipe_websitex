@@ -75,14 +75,16 @@ export default function AboutMe() {
                 aria-valuenow={skill.level}
                 className="flex h-9 overflow-hidden rounded-sm bg-[#edeef5] text-xs font-bold text-white shadow-sm sm:text-sm"
               >
-                <span className="flex w-24 shrink-0 items-center justify-center bg-cyan-500 px-2 text-center sm:w-32">
+                <span className="flex w-1/4 shrink-0 items-center justify-center bg-cyan-500 px-2 text-center">
                   {skill.name}
                 </span>
-                <div
-                  className="flex h-full items-center justify-end bg-gradient-to-b from-[#70008c] to-[#7100d1] pr-2 transition-[width] duration-1000 ease-out"
-                  style={{ width: inView ? `${skill.level}%` : '0%' }}
-                >
-                  <span className="whitespace-nowrap">{skill.level}%</span>
+                <div className="h-full w-3/4 shrink-0 overflow-hidden bg-[#edeef5]">
+                  <div
+                    className="flex h-full shrink-0 items-center justify-end overflow-hidden bg-gradient-to-b from-[#70008c] to-[#7100d1] pr-2 transition-[width] duration-1000 ease-out"
+                    style={{ width: inView ? `${skill.level}%` : '0%' }}
+                  >
+                    <span className="whitespace-nowrap">{skill.level}%</span>
+                  </div>
                 </div>
               </div>
             ))}

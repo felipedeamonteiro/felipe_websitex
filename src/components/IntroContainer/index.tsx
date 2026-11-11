@@ -2,14 +2,7 @@ import Image from 'next/image';
 import darkThemeImage from '@public/blue_night_sky.jpg';
 import lightThemeImage from '@public/white_landscape.jpg';
 
-const stars = [
-  { right: 0, duration: 3.5, delay: 0 },
-  { right: 120, duration: 4.5, delay: 0.8 },
-  { right: 280, duration: 3.8, delay: 1.6 },
-  { right: 480, duration: 5, delay: 0.4 },
-  { right: 720, duration: 4.2, delay: 2.1 },
-  { right: 920, duration: 5.4, delay: 1.1 },
-];
+const stars = Array.from({ length: 10 }, (_, index) => index + 1);
 
 export default function IntroContainer() {
   return (
@@ -37,14 +30,7 @@ export default function IntroContainer() {
 
       <div className="shooting-stars hidden dark:block" aria-hidden="true">
         {stars.map((star) => (
-          <span
-            key={star.right}
-            style={{
-              right: star.right,
-              animationDuration: `${star.duration}s`,
-              animationDelay: `${star.delay}s`,
-            }}
-          />
+          <span key={star} />
         ))}
       </div>
 

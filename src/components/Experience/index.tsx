@@ -106,10 +106,10 @@ function TimelineEntry({
   return (
     <li
       ref={entryRef}
-      className="relative mb-14 last:mb-0 md:grid md:grid-cols-2 md:gap-24"
+      className="relative mb-14 last:mb-0 md:grid md:grid-cols-2 md:gap-48"
     >
       <div
-        className={`absolute top-0 left-0 z-10 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-4 bg-white transition-all duration-500 md:left-1/2 md:h-24 md:w-24 md:-translate-x-1/2 ${
+        className={`absolute top-0 left-0 z-10 flex h-[130px] w-[130px] items-center justify-center overflow-hidden rounded-full border-[9px] bg-white transition-all duration-500 sm:h-[150px] sm:w-[150px] md:left-1/2 md:-translate-x-1/2 lg:h-[170px] lg:w-[170px] ${
           inView
             ? 'blur-0 border-cyan-400 grayscale-0'
             : 'border-slate-500 dark:blur-[2px] dark:grayscale'
@@ -122,7 +122,7 @@ function TimelineEntry({
         />
       </div>
       <div
-        className={`ml-24 rounded-xl border border-slate-300/60 bg-white/65 p-5 shadow-sm transition-all duration-500 md:ml-0 md:p-6 dark:border-cyan-900 dark:bg-white/5 ${
+        className={`ml-36 rounded-xl border border-slate-300/60 bg-white/65 p-5 shadow-sm transition-all duration-500 sm:ml-40 md:ml-0 md:p-6 dark:border-cyan-900 dark:bg-white/5 ${
           isEven ? 'md:col-start-2' : 'md:col-start-1 md:text-right'
         } ${
           inView
@@ -159,7 +159,7 @@ export default function Experience() {
             Etapas da carreira profissional
           </p>
         </header>
-        <ol className="relative mx-auto mt-16 max-w-6xl before:absolute before:top-0 before:bottom-0 before:left-8 before:w-0.5 before:bg-slate-400 before:content-[''] md:before:left-1/2 dark:before:bg-cyan-400">
+        <ol className="relative mx-auto mt-16 max-w-6xl before:absolute before:top-0 before:bottom-0 before:left-[65px] before:w-0.5 before:bg-slate-400 before:content-[''] sm:before:left-[75px] md:before:left-1/2 dark:before:bg-cyan-400">
           {experiences.map((experience, index) => (
             <TimelineEntry
               key={`${experience.period}-${experience.company}`}
