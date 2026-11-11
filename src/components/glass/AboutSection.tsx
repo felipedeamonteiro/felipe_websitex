@@ -123,9 +123,9 @@ export default function AboutSection() {
             {t.about.degrees.map((degree) => (
               <li
                 key={degree.course}
-                className="glass glass-border flex gap-4 rounded-2xl p-5 transition duration-300 [--ring-from:var(--color-neon-pink)] [--ring-to:var(--g-accent)] hover:-translate-y-1 dark:hover:shadow-[0_0_30px_-6px_#f73e69]"
+                className="glass glass-border flex gap-4 rounded-2xl p-5 transition duration-300 [--ring-from:var(--color-neon-violet)] [--ring-to:var(--g-accent)] hover:-translate-y-1 dark:hover:shadow-[0_0_30px_-6px_#8b5cf6]"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-[0_0_18px_-6px_#f73e69]">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-[0_0_18px_-6px_#8b5cf6]">
                   <Image
                     src={LogoUnicamp}
                     alt={t.about.unicampAlt}
@@ -141,7 +141,7 @@ export default function AboutSection() {
                   <p className="font-body mt-1 text-sm text-[var(--g-muted)]">
                     {degree.detail}
                   </p>
-                  <p className="mt-3 font-mono text-[0.7rem] tracking-[0.15em] text-[var(--color-neon-pink)] uppercase">
+                  <p className="mt-3 font-mono text-[0.7rem] tracking-[0.15em] text-[var(--color-neon-violet)] uppercase">
                     {degree.status}
                   </p>
                 </div>

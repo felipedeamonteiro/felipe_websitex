@@ -38,7 +38,7 @@ function Computers({ isMobile }: { isMobile: boolean }) {
         castShadow
         shadow-mapSize={1024}
       />
-      <pointLight position={[2, 1, 3]} color="#ff2bd6" intensity={60} />
+      <pointLight position={[2, 1, 3]} color="#a855f7" intensity={60} />
       <pointLight position={[-3, 0.5, -2]} color="#22d3ee" intensity={60} />
       <primitive
         object={scene}
@@ -51,7 +51,7 @@ function Computers({ isMobile }: { isMobile: boolean }) {
         args={[40, 40]}
         cellSize={0.6}
         cellThickness={0.6}
-        cellColor="#7a1f8f"
+        cellColor="#4c1d95"
         sectionSize={3}
         sectionThickness={1.2}
         sectionColor="#22d3ee"

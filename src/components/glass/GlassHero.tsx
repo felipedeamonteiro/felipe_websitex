@@ -87,7 +87,7 @@ export default function GlassHero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <span className="hidden dark:inline-flex">
-              <NeonButtonReal href="#projects" buttonColorHex="#ff2bd6">
+              <NeonButtonReal href="#projects" buttonColorHex="#a855f7">
                 {t.hero.viewProjects}
                 <FiArrowRight aria-hidden="true" className="ml-2" />
               </NeonButtonReal>

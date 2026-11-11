@@ -102,7 +102,7 @@ export default function TechBallsCanvas({
         >
           <ambientLight intensity={1.2} />
           <directionalLight position={[2, 3, 5]} intensity={2.4} />
-          <pointLight position={[-6, -2, 4]} color="#ff2bd6" intensity={40} />
+          <pointLight position={[-6, -2, 4]} color="#a855f7" intensity={40} />
           <pointLight position={[6, 2, 4]} color="#22d3ee" intensity={40} />
           <Suspense fallback={null}>
             <BallGrid techs={techs} />

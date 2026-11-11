@@ -32,7 +32,7 @@ export default function EarthCanvas({
         className="!touch-pan-y"
       >
         <ambientLight intensity={1.5} />
-        <pointLight position={[-4, 2, 4]} color="#ff2bd6" intensity={30} />
+        <pointLight position={[-4, 2, 4]} color="#a855f7" intensity={30} />
         <Suspense fallback={null}>
           <OrbitControls
             autoRotate

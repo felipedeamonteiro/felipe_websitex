@@ -13,9 +13,9 @@ interface GlassNavbarProps {
 
 export const glassSections = [
   { id: 'about', key: 'about', color: '#22d3ee' },
-  { id: 'services', key: 'services', color: '#b46bff' },
-  { id: 'experience', key: 'experience', color: '#ff4fa3' },
-  { id: 'projects', key: 'projects', color: '#ff2bd6' },
+  { id: 'services', key: 'services', color: '#4f7cff' },
+  { id: 'experience', key: 'experience', color: '#8b5cf6' },
+  { id: 'projects', key: 'projects', color: '#c084fc' },
   { id: 'contact', key: 'contact', color: '#0ef462' },
 ] as const;
 

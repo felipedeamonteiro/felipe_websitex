@@ -108,7 +108,7 @@ export default function ParallaxScene() {
         >
           <motion.div
             style={{ scale: moonScale }}
-            className="h-[min(56vw,30rem)] w-[min(56vw,30rem)] rounded-full bg-[radial-gradient(circle_at_35%_35%,#ffb3f2_0%,#ff2bd6_38%,#8a1fd1_72%,#3a0f5e_100%)] opacity-90 shadow-[0_0_120px_30px_rgb(255_43_214/0.35)]"
+            className="h-[min(56vw,30rem)] w-[min(56vw,30rem)] rounded-full bg-[radial-gradient(circle_at_35%_35%,#e9d5ff_0%,#a855f7_38%,#4f3ccf_72%,#3a0f5e_100%)] opacity-90 shadow-[0_0_120px_30px_rgb(168_85_247/0.35)]"
           >
             <div className="h-full w-full rounded-full bg-[repeating-linear-gradient(180deg,transparent_0_14px,rgb(5_4_15/0.35)_14px_18px)] [mask-image:linear-gradient(180deg,transparent_45%,#000_75%)]" />
           </motion.div>
@@ -175,7 +175,7 @@ export default function ParallaxScene() {
             edge="#2a1a5c"
             windowColors={[
               '#22d3ee',
-              '#ff2bd6',
+              '#a855f7',
               '#b46bff',
               '#3b2a7a',
               '#3b2a7a',
@@ -209,7 +209,7 @@ export default function ParallaxScene() {
           depth={-40}
           className="inset-x-[-20%] -bottom-[4%] z-40 h-[24%] [perspective:420px]"
         >
-          <div className="h-full w-full origin-bottom [transform:rotateX(62deg)] bg-[#07061a] bg-[linear-gradient(rgb(255_43_214/0.55)_2px,transparent_2px),linear-gradient(90deg,rgb(34_211_238/0.45)_2px,transparent_2px)] [mask-image:linear-gradient(180deg,transparent,#000_35%)] bg-[size:72px_72px] motion-safe:animate-[grid-flow_2.4s_linear_infinite]" />
+          <div className="h-full w-full origin-bottom [transform:rotateX(62deg)] bg-[#07061a] bg-[linear-gradient(rgb(168_85_247/0.55)_2px,transparent_2px),linear-gradient(90deg,rgb(34_211_238/0.45)_2px,transparent_2px)] [mask-image:linear-gradient(180deg,transparent,#000_35%)] bg-[size:72px_72px] motion-safe:animate-[grid-flow_2.4s_linear_infinite]" />
         </Layer>
         <div
           aria-hidden="true"

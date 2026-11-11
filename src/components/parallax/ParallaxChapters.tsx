@@ -11,7 +11,7 @@ import { localePath } from '../../i18n/config';
 import useT, { useLocale } from '../../i18n/useT';
 import NeonButtonReal from '../Buttons/NeonButtonReal';
 
-const accents = ['#22d3ee', '#ff2bd6', '#b46bff'];
+const accents = ['#22d3ee', '#4f7cff', '#b46bff'];
 
 function Chapter({
   index,
@@ -110,7 +110,7 @@ export default function ParallaxChapters() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <NeonButtonReal
             href={localePath(locale, '/glass')}
-            buttonColorHex="#ff2bd6"
+            buttonColorHex="#a855f7"
           >
             {t.parallax.ctaGlass}
           </NeonButtonReal>

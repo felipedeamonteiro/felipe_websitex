@@ -9,7 +9,7 @@ import useT from '../../i18n/useT';
 import SectionHeading from '../shared/SectionHeading';
 
 const icons = [FiMonitor, FiSmartphone, FiServer, FiShoppingCart];
-const glows = ['#22d3ee', '#b46bff', '#ff2bd6', '#0ef462'];
+const glows = ['#22d3ee', '#b46bff', '#4f7cff', '#0ef462'];
 
 export default function ServicesSection() {
   const t = useT();

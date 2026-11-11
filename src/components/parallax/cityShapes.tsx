@@ -98,7 +98,7 @@ export function Skyline({
             cx={s.x}
             cy={s.y - s.h}
             r={2.5}
-            fill="#ff2bd6"
+            fill="#a855f7"
             className="animate-pulse"
           />
         </g>
@@ -218,7 +218,7 @@ export function NeonTowers({
           height={signA.length * 64 + 20}
           rx={6}
           fill="none"
-          stroke="#ff2bd6"
+          stroke="#a855f7"
           strokeWidth={3}
         />
         {Array.from(signA).map((char, index) => (
@@ -229,7 +229,7 @@ export function NeonTowers({
             textAnchor="middle"
             fontSize={46}
             fontWeight={700}
-            fill="#ff7be6"
+            fill="#d8b4fe"
             fontFamily="var(--font-noto-jp), sans-serif"
           >
             {char}
@@ -294,7 +294,7 @@ export function NeonTowers({
             y={340 + row * 34}
             width={180}
             height={4}
-            fill={row % 4 ? '#3b2a7a' : '#ff2bd6'}
+            fill={row % 4 ? '#3b2a7a' : '#a855f7'}
           />
         </g>
       ))}

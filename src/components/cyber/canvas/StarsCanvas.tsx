@@ -23,7 +23,7 @@ function Stars({ animate }: { animate: boolean }) {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled>
         <PointMaterial
           transparent
-          color="#f272c8"
+          color="#a78bfa"
           size={0.0022}
           sizeAttenuation
           depthWrite={false}

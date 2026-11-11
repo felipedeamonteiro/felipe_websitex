@@ -15,7 +15,7 @@ import { fadeIn, slideIn, textVariant } from './motion';
 import SectionWrapper from './SectionWrapper';
 import useTilt from './useTilt';
 
-const tagColors = ['text-[#22d3ee]', 'text-[#ff4fa3]', 'text-[#b46bff]'];
+const tagColors = ['text-[#22d3ee]', 'text-[#4f7cff]', 'text-[#b46bff]'];
 
 function Heading({
   label,
@@ -36,7 +36,7 @@ function Heading({
         className="font-display xs:text-[40px] mt-2 text-[30px] font-black text-white sm:text-[50px] md:text-[60px]"
       >
         {title}
-        <span className="text-[var(--color-neon-magenta)]">.</span>
+        <span className="text-[var(--color-neon-violet)]">.</span>
       </h2>
     </motion.div>
   );
@@ -53,8 +53,8 @@ export function CyberHero({ webgl }: { webgl: boolean | null }) {
     >
       <div className="pointer-events-none absolute inset-x-0 top-[110px] z-10 mx-auto flex max-w-7xl flex-row items-start gap-5 px-6 sm:px-16">
         <div aria-hidden="true" className="mt-5 flex flex-col items-center">
-          <div className="h-5 w-5 rounded-full bg-[var(--color-neon-magenta)] shadow-[0_0_20px_var(--color-neon-magenta)]" />
-          <div className="h-40 w-1 bg-linear-to-b from-[var(--color-neon-magenta)] to-transparent sm:h-80" />
+          <div className="h-5 w-5 rounded-full bg-[var(--color-neon-violet)] shadow-[0_0_20px_var(--color-neon-violet)]" />
+          <div className="h-40 w-1 bg-linear-to-b from-[var(--color-neon-violet)] to-transparent sm:h-80" />
         </div>
         <div>
           <h1
@@ -63,7 +63,7 @@ export function CyberHero({ webgl }: { webgl: boolean | null }) {
           >
             {t.cyber.kicker}{' '}
             <span
-              className="glitch text-[var(--color-neon-magenta)]"
+              className="glitch text-[var(--color-neon-violet)]"
               data-text={profile.firstName}
             >
               {profile.firstName}
@@ -127,9 +127,9 @@ function ServiceCard({
     >
       <div
         {...tilt}
-        className="rounded-[20px] bg-linear-to-br from-[var(--color-neon-cyan)] via-[var(--color-neon-violet)] to-[var(--color-neon-magenta)] p-[1px] shadow-[0_35px_120px_-15px_#3a0f5e] transition-transform duration-200 ease-out will-change-transform"
+        className="rounded-[20px] bg-linear-to-br from-[var(--color-neon-cyan)] via-[var(--color-neon-blue)] to-[var(--color-neon-violet)] p-[1px] shadow-[0_35px_120px_-15px_#3a0f5e] transition-transform duration-200 ease-out will-change-transform"
       >
-        <div className="flex min-h-[280px] flex-col items-center justify-evenly rounded-[20px] bg-[#0e0b2a] bg-[radial-gradient(circle_at_var(--mx,50%)_var(--my,0%),rgb(255_43_214/0.18),transparent_60%)] px-8 py-5 text-center">
+        <div className="flex min-h-[280px] flex-col items-center justify-evenly rounded-[20px] bg-[#0e0b2a] bg-[radial-gradient(circle_at_var(--mx,50%)_var(--my,0%),rgb(168_85_247/0.18),transparent_60%)] px-8 py-5 text-center">
           <Icon
             aria-hidden="true"
             className="h-14 w-14 text-[var(--color-neon-cyan)] drop-shadow-[0_0_12px_var(--color-neon-cyan)]"
@@ -186,7 +186,7 @@ export function CyberExperience() {
           title={t.experience.title}
         />
       </div>
-      <ol className="relative mt-20 before:absolute before:top-0 before:bottom-0 before:left-6 before:w-1 before:bg-linear-to-b before:from-[var(--color-neon-magenta)] before:via-[var(--color-neon-violet)] before:to-[var(--color-neon-cyan)] before:content-[''] md:before:left-1/2 md:before:-translate-x-1/2">
+      <ol className="relative mt-20 before:absolute before:top-0 before:bottom-0 before:left-6 before:w-1 before:bg-linear-to-b before:from-[var(--color-neon-violet)] before:via-[var(--color-neon-blue)] before:to-[var(--color-neon-cyan)] before:content-[''] md:before:left-1/2 md:before:-translate-x-1/2">
         {entries.map(({ data, text, index }, position) => {
           const right = position % 2 === 1;
           return (
@@ -287,7 +287,7 @@ function ProjectTiltCard({ index }: { index: number }) {
     >
       <div
         {...tilt}
-        className="glass-border relative w-full rounded-2xl bg-[#151030] p-5 transition-transform duration-200 ease-out [--ring-from:var(--color-neon-magenta)] [--ring-to:var(--color-neon-cyan)]"
+        className="glass-border relative w-full rounded-2xl bg-[#151030] p-5 transition-transform duration-200 ease-out [--ring-from:var(--color-neon-violet)] [--ring-to:var(--color-neon-cyan)]"
       >
         <div className="relative h-[230px] w-full overflow-hidden rounded-2xl">
           <Image
@@ -303,7 +303,7 @@ function ProjectTiltCard({ index }: { index: number }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${t.projects.open}: ${text.title}`}
-              className="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#434343] to-black text-white shadow-[0_0_14px_var(--color-neon-magenta)] transition hover:scale-110 focus-visible:outline-2 focus-visible:outline-[var(--color-neon-cyan)]"
+              className="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#434343] to-black text-white shadow-[0_0_14px_var(--color-neon-violet)] transition hover:scale-110 focus-visible:outline-2 focus-visible:outline-[var(--color-neon-cyan)]"
             >
               <FiArrowUpRight aria-hidden="true" />
             </a>
@@ -377,7 +377,7 @@ export function CyberContact({ webgl }: { webgl: boolean | null }) {
             className="font-display mt-2 mb-8 text-[30px] font-black text-white sm:text-[50px]"
           >
             {t.cyber.contactTitle}
-            <span className="text-[var(--color-neon-magenta)]">.</span>
+            <span className="text-[var(--color-neon-violet)]">.</span>
           </h2>
           <ContactForm />
         </motion.div>
