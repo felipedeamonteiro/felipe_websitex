@@ -8,10 +8,12 @@ export default function ParallaxPage() {
   const t = useT();
 
   return (
-    <div className="glass-theme dark font-body relative min-h-screen overflow-x-clip bg-[var(--g-bg)]">
+    <div className="glass-theme dark font-body relative min-h-screen overflow-x-clip bg-(--g-bg)">
       <Head>
         <title>{t.meta.parallaxTitle}</title>
         <meta name="description" content={t.meta.glassDescription} />
+        {/* Alternative layout: reachable by URL only, kept out of search results. */}
+        <meta name="robots" content="noindex" />
       </Head>
       <MiniHeader />
       <main>

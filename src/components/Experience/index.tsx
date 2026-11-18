@@ -1,99 +1,22 @@
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { useRef } from 'react';
-import AprendizImg from '@public/AprendizDigital.png';
-import FormulaImg from '@public/FormulaSAE.png';
-import LdemImg from '@public/LDEM.jpg';
-import LetrusImg from '@public/letrus.png';
-import MeuColegioImg from '@public/MeuColegio.png';
-import NubankImg from '@public/Nubank.jpg';
-import ObjectEdgeLogo from '@public/object-edge-squarelogo.png';
-import SiemensImg from '@public/Siemens.jpg';
+import { experiences, type ExperienceData } from '../../content/profile';
+import type { Dictionary } from '../../i18n/dictionaries/pt-BR';
+import useT from '../../i18n/useT';
 import useInView from '../../utils/intersectionMethod';
 
+/*
+ * Entries come from src/content/profile.ts (logos) and
+ * src/i18n/dictionaries/* (period + description), shared with /glass and /cyber.
+ */
+
 interface ExperienceEntry {
-  period: string;
-  company: string;
-  description: string;
-  image: StaticImageData;
-  imageAlt: string;
+  data: ExperienceData;
+  text: Dictionary['experience']['items'][number];
 }
 
-const experiences: ExperienceEntry[] = [
-  {
-    period: '1 - De 2009 a 2010',
-    company: 'Fórmula SAE Unicamp',
-    description:
-      'Fiz parte da divisão de freios, onde projetamos todo o sistema de freios do carro F-2009. Nos classificamos em 5º lugar.',
-    image: FormulaImg,
-    imageAlt: 'Fórmula SAE Unicamp',
-  },
-  {
-    period: '2 - De 2011 a 2013',
-    company: 'Iniciação científica no antigo LDEM Unicamp',
-    description:
-      'Iniciação científica na área de vibrações mecânicas com bolsa do CNPq. Estudei fenômenos vibratórios em engrenagens planetárias de transmissões automáticas.',
-    image: LdemImg,
-    imageAlt: 'LDEM',
-  },
-  {
-    period: '3 - 2º semestre de 2013',
-    company: 'Meu Colégio',
-    description: 'Trabalhei como professor do colégio técnico noturno.',
-    image: MeuColegioImg,
-    imageAlt: 'Meu Colégio',
-  },
-  {
-    period: '4 - De junho a dezembro de 2014',
-    company: 'Siemens Industry Software',
-    description:
-      'Estágio na área de softwares LMS, atual Simcenter, que atuam na simulação e nos testes de projetos.',
-    image: SiemensImg,
-    imageAlt: 'Siemens',
-  },
-  {
-    period: '5 - De janeiro de 2015 a março de 2016',
-    company: 'Siemens Industry Software',
-    description:
-      'Trabalhei com pré e pós-venda técnica do software Preactor, que cuida da programação e do planejamento do processo de produção de indústrias.',
-    image: SiemensImg,
-    imageAlt: 'Siemens',
-  },
-  {
-    period: '6 - De março a junho de 2017',
-    company: 'Nubank',
-    description:
-      'Atuei como analista de relacionamento ao cliente nos setores de Bills e Chargeback.',
-    image: NubankImg,
-    imageAlt: 'Nubank',
-  },
-  {
-    period: '7 - De junho de 2016 até outubro de 2019',
-    company: 'Aprendiz Digital',
-    description:
-      'Fui fundador desta startup da área da educação. Ela oferecia serviços de aulas particulares de exatas e programação.',
-    image: AprendizImg,
-    imageAlt: 'Aprendiz Digital',
-  },
-  {
-    period: '8 - De janeiro a setembro de 2020',
-    company: 'Letrus',
-    description:
-      'Atuei como desenvolvedor frontend nos diversos projetos da empresa, com design system, integração com HubSpot, resolução de bugs, manutenção e atualização do código e participação na criação de um backoffice.',
-    image: LetrusImg,
-    imageAlt: 'Letrus',
-  },
-  {
-    period: '9 - Desde fevereiro de 2021',
-    company: 'Object Edge',
-    description:
-      'Desenvolvedor frontend React em projetos internacionais, lidando com clientes e colegas de trabalho espalhados pelo mundo, com foco no desenvolvimento e na manutenção de plataformas de e-commerce.',
-    image: ObjectEdgeLogo,
-    imageAlt: 'Object Edge',
-  },
-];
-
 function TimelineEntry({
-  experience,
+  experience: { data, text },
   index,
 }: {
   experience: ExperienceEntry;
@@ -114,11 +37,15 @@ function TimelineEntry({
             ? 'blur-0 border-cyan-400 grayscale-0'
             : 'border-slate-500 dark:blur-[2px] dark:grayscale'
         }`}
+        style={data.logoBg ? { backgroundColor: data.logoBg } : undefined}
       >
         <Image
-          src={experience.image}
-          alt={experience.imageAlt}
-          className="h-full w-full object-contain"
+          src={data.logo}
+          alt={data.company}
+          sizes="170px"
+          className={`object-contain ${
+            data.logoInset ? 'h-[72%] w-[72%]' : 'h-full w-full'
+          }`}
         />
       </div>
       <div
@@ -130,14 +57,14 @@ function TimelineEntry({
             : 'translate-y-4 opacity-70 md:opacity-100'
         }`}
       >
-        <p className="text-xs font-bold tracking-wide text-[var(--muted)] uppercase sm:text-sm">
-          {experience.period}
+        <p className="text-xs font-bold tracking-wide text-(--muted) uppercase sm:text-sm">
+          {index + 1} - {text.period}
         </p>
         <h3 className="font-display mt-2 text-lg leading-7 font-bold sm:text-xl">
-          {experience.company}
+          {data.company}
         </h3>
         <p className="font-body mt-4 text-base leading-7 text-slate-700 dark:text-slate-200">
-          {experience.description}
+          {text.description}
         </p>
       </div>
     </li>
@@ -145,24 +72,30 @@ function TimelineEntry({
 }
 
 export default function Experience() {
+  const t = useT();
+  const entries = experiences.map((data, index) => ({
+    data,
+    text: t.experience.items[index],
+  }));
+
   return (
     <section
       id="section-experiencia"
-      className="bg-[var(--section-background)] px-5 py-24 text-[var(--text)] sm:px-8"
+      className="bg-(--section-background) px-5 py-24 text-(--text) sm:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <header className="text-center">
           <h2 className="font-display text-3xl leading-tight font-bold sm:text-4xl">
-            Experiência Profissional
+            {t.original.experienceTitle}
           </h2>
-          <p className="font-body mt-5 text-lg text-[var(--muted)] italic">
-            Etapas da carreira profissional
+          <p className="font-body mt-5 text-lg text-(--muted) italic">
+            {t.original.experienceSubtitle}
           </p>
         </header>
-        <ol className="relative mx-auto mt-16 max-w-6xl before:absolute before:top-0 before:bottom-0 before:left-[65px] before:w-0.5 before:bg-slate-400 before:content-[''] sm:before:left-[75px] md:before:left-1/2 dark:before:bg-cyan-400">
-          {experiences.map((experience, index) => (
+        <ol className="relative mx-auto mt-16 max-w-6xl before:absolute before:top-0 before:bottom-0 before:left-16.25 before:w-0.5 before:bg-slate-400 before:content-[''] sm:before:left-18.75 md:before:left-1/2 dark:before:bg-cyan-400">
+          {entries.map((experience, index) => (
             <TimelineEntry
-              key={`${experience.period}-${experience.company}`}
+              key={`${experience.text.period}-${experience.data.company}`}
               experience={experience}
               index={index}
             />

@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from 'next/image';
 import { useState } from 'react';
+import useT from '../../i18n/useT';
 
 interface Card3DProps {
   imgSrc: StaticImageData;
@@ -16,6 +17,7 @@ export default function Card3D({
   backCardTitle,
   backCardDescription,
 }: Card3DProps) {
+  const t = useT();
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -36,10 +38,10 @@ export default function Card3D({
           <button
             type="button"
             onClick={() => setIsFlipped(true)}
-            aria-label={`Ver detalhes de ${backCardTitle}`}
+            aria-label={`${t.projects.detailsOf} ${backCardTitle}`}
             className="absolute right-3 bottom-3 rounded-md bg-[#06072a]/90 px-4 py-2 text-sm font-bold text-white transition hover:bg-cyan-300 hover:text-[#06072a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
           >
-            Detalhes
+            {t.projects.details}
           </button>
         </div>
 
@@ -54,11 +56,11 @@ export default function Card3D({
                 rel="noopener noreferrer"
                 className="mt-5 inline-block rounded-md bg-white px-4 py-2 text-sm font-bold text-[#2800b3] transition hover:bg-cyan-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                Abrir projeto
+                {t.projects.open}
               </a>
             ) : (
               <p className="mt-5 text-sm font-bold text-cyan-100">
-                Projeto em construção
+                {t.original.projectInProgress}
               </p>
             )}
           </div>
@@ -67,7 +69,7 @@ export default function Card3D({
             onClick={() => setIsFlipped(false)}
             className="mt-4 self-start rounded-md border border-white/60 px-3 py-1.5 text-sm transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            Voltar
+            {t.projects.back}
           </button>
         </div>
       </div>

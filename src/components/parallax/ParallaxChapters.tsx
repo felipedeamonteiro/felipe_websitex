@@ -109,13 +109,13 @@ export default function ParallaxChapters() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <NeonButtonReal
-            href={localePath(locale, '/glass')}
+            href={localePath(locale, '/')}
             buttonColorHex="#a855f7"
           >
             {t.parallax.ctaGlass}
           </NeonButtonReal>
           <Link
-            href="/glass#contact"
+            href="/#contact"
             className="group inline-flex items-center gap-2 rounded-lg border border-[var(--g-border)] px-6 py-2.5 text-sm font-bold tracking-wider uppercase transition hover:border-[var(--color-neon-cyan)] hover:text-[var(--color-neon-cyan)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-neon-cyan)]"
           >
             {t.parallax.ctaContact}

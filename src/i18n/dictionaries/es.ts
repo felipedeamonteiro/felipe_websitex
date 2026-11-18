@@ -27,13 +27,7 @@ const es = {
     toDark: 'Activar tema oscuro',
     social: 'Redes sociales',
     backToTop: 'Volver arriba',
-  },
-  switcher: {
-    label: 'Comparar versiones del diseño',
-    original: 'Original',
-    glass: 'Glass',
-    cyber: '3D',
-    parallax: 'Parallax',
+    backHome: 'Volver al portafolio',
   },
   hero: {
     kicker: 'Ingeniero Full-Stack',
@@ -160,9 +154,24 @@ const es = {
           'Desarrollador front-end en los diversos proyectos de la empresa: design system, integración con HubSpot, corrección de bugs, mantenimiento del código y creación de un backoffice.',
       },
       {
-        period: 'Desde feb 2021',
+        period: 'Feb 2021 – Nov 2023',
         description:
           'Desarrollador front-end React en proyectos internacionales, con clientes y colegas de todo el mundo, enfocado en el desarrollo y mantenimiento de plataformas de e-commerce.',
+      },
+      {
+        period: 'Jun 2024 – Ene 2025',
+        description:
+          'Ingeniero full-stack con React, React Native y Node.js. Creamos una app para la empresa SDAMed que se conecta por Bluetooth a sus equipos de atención veterinaria. También trabajamos en un proyecto de Visa con la Alcaldía de São Paulo en el CUBO de Itaú para implementar un nuevo sistema de pagos en el transporte público.',
+      },
+      {
+        period: 'Ene 2025 – Sep 2026',
+        description:
+          'Trabajé como ingeniero full-stack en varios proyectos internacionales: 8 meses en eBay, 3 meses en el proyecto de la app Momeaze de Ninja Concepts y luego 4 meses en ZeroHash, empresa de criptomonedas.',
+      },
+      {
+        period: 'Desde ago 2021',
+        description:
+          'Comenzó como un proyecto personal y hoy es una startup con un MVP lanzado. DojoFind es una plataforma para el ecosistema de las artes marciales, con buscador de academias, red social, marketplace, cartelera de eventos y 4 tipos diferentes de usuario. Soy el CEO y CTO de la empresa. Incluye una plataforma web, app propia, backoffice para los colaboradores y toda una infraestructura DevOps desarrollada por mí con ayuda de IA.',
       },
     ],
     academic: 'Académico',
@@ -179,6 +188,8 @@ const es = {
         description:
           'Listado de clínicas y formulario para registrar nuevas, siguiendo el layout, integrando la API de Correios e implementando ordenamiento.',
         alt: 'Pantalla de la prueba Caos Focado',
+        details:
+          'El proyecto consiste en construir un listado de clínicas proporcionadas previamente y un formulario para agregar nuevas. La tarea incluía seguir el layout, integrar la API de Correios e implementar ordenamiento.',
       },
       {
         title: 'Credere',
@@ -186,6 +197,8 @@ const es = {
         description:
           'Proyecto full-stack con back-end en Digital Ocean y front-end en Vercel. La aplicación controla una sonda que se mueve en un plano 2D.',
         alt: 'Pantalla de la prueba Credere',
+        details:
+          'Proyecto full-stack con back-end alojado en Digital Ocean y front-end en Vercel. La aplicación controla una sonda que se desplaza en un plano 2D.',
       },
       {
         title: 'Venturus',
@@ -193,18 +206,22 @@ const es = {
         description:
           'Dashboard inspirado en Cartola FC para armar equipos de fútbol usando una API externa. Uno de los layouts más desafiantes que he desarrollado.',
         alt: 'Pantalla de la prueba Venturus',
+        details:
+          'Dashboard inspirado en Cartola FC para crear equipos de fútbol personalizados usando una API externa. El layout complejo lo convirtió en uno de los trabajos más desafiantes que he desarrollado.',
       },
       {
         title: 'Code Miner',
         role: 'Dev Full-Stack',
         description: 'Aún en construcción.',
         alt: 'Pantalla de la prueba Code Miner',
+        details: 'Aún en construcción.',
       },
       {
         title: 'Conta Simples',
         role: 'Dev Full-Stack',
         description: 'Back-end listo, con el front-end aún en construcción.',
         alt: 'Pantalla de la prueba Conta Simples',
+        details: 'Back-end listo, con el front-end aún en construcción.',
       },
     ],
     open: 'Abrir proyecto',
@@ -216,6 +233,12 @@ const es = {
   tools: {
     label: 'Herramientas',
     title: 'Herramientas que uso',
+  },
+  workstation: {
+    label: 'Estación de trabajo',
+    title: 'Donde las ideas se vuelven código',
+    text: 'Una configuración pensada para construir productos web y móviles de punta a punta, del design system al deploy. Estas son las herramientas que uso todos los días.',
+    stageLabel: 'Modelo 3D de una computadora gamer sobre una cuadrícula neón',
   },
   process: {
     label: 'Proceso',
@@ -251,6 +274,7 @@ const es = {
     locationLabel: 'Ubicación',
     locationValue: 'Brasil',
     githubLabel: 'GitHub',
+    globeCaption: 'Desde Brasil para el mundo',
     formLabel: 'Formulario de contacto',
     fields: {
       name: 'Nombre',
@@ -277,6 +301,41 @@ const es = {
     rights: 'Todos los derechos reservados.',
     builtWith: 'Diseñado y desarrollado con Next.js y Tailwind CSS',
     modelCredits: 'Modelos 3D (CC BY 4.0):',
+  },
+  original: {
+    title: 'Felipe Monteiro | Portafolio',
+    home: 'INICIO',
+    nav: {
+      experience: 'Experiencia',
+      projects: 'Proyectos',
+      about: 'Sobre mí',
+      contact: 'Contacto',
+    },
+    heroRole: 'INGENIERO FULL-STACK',
+    heroStack: 'REACT, NODE & REACT NATIVE',
+    experienceTitle: 'Experiencia Profesional',
+    experienceSubtitle: 'Etapas de la carrera profesional',
+    projectsTitle: 'Proyectos',
+    projectsSubtitle: 'Pruebas técnicas de procesos de selección de empresas',
+    projectTestTitle: 'Prueba para {role} - {title}',
+    projectInProgress: 'Proyecto en construcción',
+    aboutTitle: 'Sobre mí',
+    photoAlt: 'Foto de Felipe',
+    whoAmI: '¿Quién soy?',
+    aboutLines: [
+      'Soy ingeniero full-stack.',
+      '¡Me apasiona la tecnología y construir!',
+    ],
+    aboutQuestion: 'Pero ¿construir qué?',
+    aboutAnswer: 'Soluciones inteligentes para problemas diversos.',
+    aboutCta: '¿Quieres saber más? Escríbeme y tomemos un café.',
+    skillsLabel: 'Nivel de habilidades',
+    educationTitle: 'FORMACIÓN ACADÉMICA',
+    educationSubtitle:
+      'Sólida formación académica en una institución de educación superior de prestigio en Brasil',
+    contactTitle: 'Contacto',
+    contactSubtitle: 'Déjame tu mensaje y conversemos',
+    send: 'Enviar',
   },
   cyber: {
     kicker: 'Hola, soy',
@@ -311,8 +370,8 @@ const es = {
       },
       {
         label: '03 · Hoy',
-        title: 'E-commerce por el mundo',
-        text: 'Plataformas internacionales de e-commerce con equipos distribuidos, cuidando el rendimiento y la calidad.',
+        title: 'Del código al producto',
+        text: 'CEO y CTO de DojoFind, plataforma para el ecosistema de las artes marciales, con experiencia en proyectos internacionales como eBay y ZeroHash.',
       },
     ],
     ctaTitle: '¿Te gustó el paseo?',

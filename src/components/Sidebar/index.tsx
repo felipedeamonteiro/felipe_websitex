@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import useT from '../../i18n/useT';
 import { navigationLinks } from '../../utils/navigation';
 
 interface SidebarProps {
@@ -8,6 +9,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const t = useT();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <aside
       id="mobile-navigation"
-      aria-label="Menu de navegação"
+      aria-label={t.nav.mobileMenu}
       aria-hidden={!isOpen}
       inert={!isOpen}
       onMouseDown={(event) => {
@@ -46,7 +48,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       <button
         ref={closeButtonRef}
         type="button"
-        aria-label="Fechar menu"
+        aria-label={t.nav.closeMenu}
         onClick={onClose}
         className="absolute top-5 right-5 flex h-12 w-12 items-center justify-center rounded-md text-3xl text-white transition hover:bg-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
@@ -60,7 +62,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               onClick={onClose}
               className="font-display block rounded-md px-4 py-5 text-xl text-white uppercase transition hover:bg-black/10 hover:text-[#06072a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              {link.label}
+              {t.original.nav[link.key]}
             </a>
           </li>
         ))}

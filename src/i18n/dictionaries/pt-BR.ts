@@ -29,13 +29,7 @@ const ptBR = {
     toDark: 'Ativar tema escuro',
     social: 'Redes sociais',
     backToTop: 'Voltar ao topo',
-  },
-  switcher: {
-    label: 'Comparar versões do design',
-    original: 'Original',
-    glass: 'Glass',
-    cyber: '3D',
-    parallax: 'Parallax',
+    backHome: 'Voltar ao portfólio',
   },
   hero: {
     kicker: 'Engenheiro Full-Stack',
@@ -144,27 +138,42 @@ const ptBR = {
       {
         period: 'Jan 2015 – Mar 2016',
         description:
-          'Pré e pós-venda técnica do software Preactor, que cuida da programação e do planejamento da produção de indústrias.',
+          'Trabalhei com pré e pós-venda técnica do software Preactor, que cuida da programação e do planejamento do processo de produção de indústrias.',
       },
       {
         period: 'Mar – Jun 2017',
         description:
-          'Analista de relacionamento com o cliente nos setores de Bills e Chargeback.',
+          'Atuei como analista de relacionamento ao cliente nos setores de Bills e Chargeback.',
       },
       {
         period: 'Jun 2016 – Out 2019',
         description:
-          'Fundador desta startup de educação, que oferecia aulas particulares de exatas e programação.',
+          'Fui fundador desta startup da área da educação. Ela oferecia serviços de aulas particulares de exatas e programação.',
       },
       {
         period: 'Jan – Set 2020',
         description:
-          'Desenvolvedor front-end nos diversos projetos da empresa: design system, integração com HubSpot, correção de bugs, manutenção do código e criação de um backoffice.',
+          'Atuei como desenvolvedor frontend nos diversos projetos da empresa, com design system, integração com HubSpot, resolução de bugs, manutenção e atualização do código e participação na criação de um backoffice.',
       },
       {
-        period: 'Desde fev 2021',
+        period: 'Fev 2021 – Nov 2023',
         description:
-          'Desenvolvedor front-end React em projetos internacionais, com clientes e colegas pelo mundo, focado no desenvolvimento e na manutenção de plataformas de e-commerce.',
+          'Desenvolvedor frontend React em projetos internacionais, lidando com clientes e colegas de trabalho espalhados pelo mundo, com foco no desenvolvimento e na manutenção de plataformas de e-commerce.',
+      },
+      {
+        period: 'Jun 2024 – Jan 2025',
+        description:
+          'Engenheiro FullStack React, React-Native e Node.js. Fizemos um app para empresa SDAMed que faz conexões via bluetooth em seus hardwares para cuidados veterinários. Também trabalhamos em um projeto da Visa com a Prefeitura de São Paulo no CUBO do Itaú para a implementação de um novo sistema de pagamentos em transportes públicos.',
+      },
+      {
+        period: 'Jan 2025 – Set 2026',
+        description:
+          'Trabalhei como Engenheiro FullStack em diversos projetos internacionais. Trabalhei 8 meses no ebay, 3 meses no projeto do app Momeaze da Ninja Concepts e depois 4 meses na ZeroHash, empresa de criptomoedas.',
+      },
+      {
+        period: 'Desde ago 2021',
+        description:
+          'Esse projeto começou como um projeto pessoal e hoje é uma Startup com MVP lançado. O DojoFind é uma plataforma voltada ao ecossistema das Artes Marciais contendo um buscador de academias, rede social, marketplace, mural de eventos e 4 diferentes tipos de usuário. Eu atuo como CEO e CTO da empresa. A plataforma conta com uma plataforma web, aplicativo próprio, backoffice para os colaboradores e toda uma infraestrutura de Devops desenvolvida por mim com o auxílio de IA.',
       },
     ],
     academic: 'Acadêmico',
@@ -181,6 +190,8 @@ const ptBR = {
         description:
           'Listagem de clínicas e formulário para cadastrar novas, seguindo o layout, integrando a API dos Correios e implementando ordenação.',
         alt: 'Tela do teste Caos Focado',
+        details:
+          'O projeto se baseia em construir uma listagem de clínicas previamente fornecidas e um formulário para adicionar novas clínicas. A tarefa incluía seguir o layout, integrar a API dos Correios e implementar ordenação.',
       },
       {
         title: 'Credere',
@@ -188,6 +199,8 @@ const ptBR = {
         description:
           'Projeto full-stack com back-end na Digital Ocean e front-end na Vercel. A aplicação controla uma sonda que se move em um plano 2D.',
         alt: 'Tela do teste Credere',
+        details:
+          'Projeto full-stack com backend hospedado na Digital Ocean e frontend na Vercel. A aplicação controla uma sonda que se locomove em um plano 2D.',
       },
       {
         title: 'Venturus',
@@ -195,18 +208,22 @@ const ptBR = {
         description:
           'Dashboard inspirada no Cartola FC para montar times de futebol usando uma API externa. Um dos layouts mais desafiadores que desenvolvi.',
         alt: 'Tela do teste Venturus',
+        details:
+          'Dashboard inspirada no Cartola FC para criar times personalizados de futebol usando uma API externa. O layout complexo tornou este um dos trabalhos mais desafiadores que desenvolvi.',
       },
       {
         title: 'Code Miner',
         role: 'Dev Full-Stack',
         description: 'Ainda em construção.',
         alt: 'Tela do teste Code Miner',
+        details: 'Ainda em construção.',
       },
       {
         title: 'Conta Simples',
         role: 'Dev Full-Stack',
         description: 'Back-end pronto, com o front-end ainda em construção.',
         alt: 'Tela do teste Conta Simples',
+        details: 'Backend pronto, com o frontend ainda em construção.',
       },
     ],
     open: 'Abrir projeto',
@@ -218,6 +235,12 @@ const ptBR = {
   tools: {
     label: 'Ferramentas',
     title: 'Ferramentas que uso',
+  },
+  workstation: {
+    label: 'Estação de trabalho',
+    title: 'Onde as ideias viram código',
+    text: 'Uma configuração montada para construir produtos web e mobile do começo ao fim, do design system ao deploy. Estas são as ferramentas que uso todos os dias.',
+    stageLabel: 'Modelo 3D de um computador gamer sobre uma grade neon',
   },
   process: {
     label: 'Processo',
@@ -253,6 +276,7 @@ const ptBR = {
     locationLabel: 'Localização',
     locationValue: 'Brasil',
     githubLabel: 'GitHub',
+    globeCaption: 'Do Brasil para o mundo',
     formLabel: 'Formulário de contato',
     fields: {
       name: 'Nome',
@@ -279,6 +303,41 @@ const ptBR = {
     rights: 'Todos os direitos reservados.',
     builtWith: 'Desenhado e desenvolvido com Next.js e Tailwind CSS',
     modelCredits: 'Modelos 3D (CC BY 4.0):',
+  },
+  original: {
+    title: 'Felipe Monteiro | Portfólio',
+    home: 'HOME',
+    nav: {
+      experience: 'Experiência',
+      projects: 'Projetos',
+      about: 'Sobre mim',
+      contact: 'Contato',
+    },
+    heroRole: 'ENGENHEIRO FULL-STACK',
+    heroStack: 'REACT, NODE & REACT NATIVE',
+    experienceTitle: 'Experiência Profissional',
+    experienceSubtitle: 'Etapas da carreira profissional',
+    projectsTitle: 'Projetos',
+    projectsSubtitle: 'Projetos de testes de processos seletivos de empresas',
+    projectTestTitle: 'Teste para {role} - {title}',
+    projectInProgress: 'Projeto em construção',
+    aboutTitle: 'Sobre mim',
+    photoAlt: 'Foto de Felipe',
+    whoAmI: 'Quem sou eu?',
+    aboutLines: [
+      'Sou engenheiro full-stack.',
+      'Tenho paixão por tecnologia e por construir!',
+    ],
+    aboutQuestion: 'Mas construir o quê?',
+    aboutAnswer: 'Soluções inteligentes para problemas diversos.',
+    aboutCta: 'Quer saber mais? Entre em contato e vamos tomar um café.',
+    skillsLabel: 'Nível de habilidades',
+    educationTitle: 'FORMAÇÃO ACADÊMICA',
+    educationSubtitle:
+      'Formação acadêmica sólida em instituição de ensino superior de renome no Brasil',
+    contactTitle: 'Contato',
+    contactSubtitle: 'Deixe sua mensagem para batermos um papo',
+    send: 'Enviar',
   },
   cyber: {
     kicker: 'Olá, eu sou',
@@ -312,8 +371,8 @@ const ptBR = {
       },
       {
         label: '03 · Hoje',
-        title: 'E-commerce pelo mundo',
-        text: 'Plataformas internacionais de e-commerce com times distribuídos, cuidando de performance e qualidade.',
+        title: 'Do código ao produto',
+        text: 'CEO e CTO do DojoFind, plataforma para o ecossistema das artes marciais, com bagagem em projetos internacionais como eBay e ZeroHash.',
       },
     ],
     ctaTitle: 'Gostou do passeio?',

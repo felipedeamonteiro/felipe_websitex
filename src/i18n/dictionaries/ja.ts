@@ -27,13 +27,7 @@ const ja = {
     toDark: 'ダークテーマに切り替え',
     social: 'ソーシャルメディア',
     backToTop: 'トップへ戻る',
-  },
-  switcher: {
-    label: 'デザインのバージョンを比較',
-    original: 'オリジナル',
-    glass: 'Glass',
-    cyber: '3D',
-    parallax: 'Parallax',
+    backHome: 'ポートフォリオに戻る',
   },
   hero: {
     kicker: 'フルスタックエンジニア',
@@ -158,9 +152,24 @@ const ja = {
           'フロントエンド開発者として社内の多様なプロジェクトに参加。デザインシステム、HubSpot 連携、バグ修正、コード保守、バックオフィスの構築を担当しました。',
       },
       {
-        period: '2021年2月から',
+        period: '2021年2月 – 2023年11月',
         description:
-          '世界中のクライアントや同僚と共に海外プロジェクトに携わる React フロントエンド開発者として、E コマースプラットフォームの開発と保守に注力しています。',
+          '世界中のクライアントや同僚と共に海外プロジェクトに携わる React フロントエンド開発者として、E コマースプラットフォームの開発と保守に注力しました。',
+      },
+      {
+        period: '2024年6月 – 2025年1月',
+        description:
+          'React、React Native、Node.js のフルスタックエンジニア。SDAMed 社向けに、動物医療用ハードウェアと Bluetooth で接続するアプリを開発しました。また、Itaú の CUBO でサンパウロ市役所と Visa のプロジェクトに参加し、公共交通機関の新しい決済システムの導入に携わりました。',
+      },
+      {
+        period: '2025年1月 – 2026年9月',
+        description:
+          'フルスタックエンジニアとして複数の海外プロジェクトに参加。eBay で8か月、Ninja Concepts の Momeaze アプリで3か月、その後暗号資産企業 ZeroHash で4か月勤務しました。',
+      },
+      {
+        period: '2021年8月から',
+        description:
+          '個人プロジェクトとして始まり、現在は MVP をリリースしたスタートアップです。DojoFind は武道・格闘技のエコシステム向けプラットフォームで、道場検索、SNS、マーケットプレイス、イベント掲示板、4種類のユーザータイプを備えています。私は CEO 兼 CTO を務めています。Web プラットフォーム、独自アプリ、スタッフ向けバックオフィス、そして AI の力を借りて私が構築した DevOps インフラ全体で構成されています。',
       },
     ],
     academic: '学術',
@@ -177,6 +186,8 @@ const ja = {
         description:
           'クリニック一覧と新規登録フォームを、レイアウトに沿って実装。Correios の API 連携と並び替え機能も実装しました。',
         alt: 'Caos Focado 課題の画面',
+        details:
+          '事前に提供されたクリニックの一覧と、新しいクリニックを追加するフォームを構築する課題です。レイアウトの再現、Correios の API 連携、並び替え機能の実装が含まれていました。',
       },
       {
         title: 'Credere',
@@ -184,6 +195,8 @@ const ja = {
         description:
           'バックエンドを Digital Ocean、フロントエンドを Vercel に置いたフルスタックプロジェクト。2D 平面を移動する探査機を制御するアプリです。',
         alt: 'Credere 課題の画面',
+        details:
+          'バックエンドを Digital Ocean、フロントエンドを Vercel にホストしたフルスタックプロジェクト。2D 平面を移動する探査機を制御するアプリです。',
       },
       {
         title: 'Venturus',
@@ -191,18 +204,22 @@ const ja = {
         description:
           'Cartola FC に着想を得た、外部 API でサッカーチームを編成するダッシュボード。これまでで最も難しいレイアウトの一つでした。',
         alt: 'Venturus 課題の画面',
+        details:
+          'Cartola FC に着想を得た、外部 API を使ってオリジナルのサッカーチームを作るダッシュボード。複雑なレイアウトのため、これまでで最も難しい仕事の一つになりました。',
       },
       {
         title: 'Code Miner',
         role: 'フルスタック開発',
         description: '現在開発中です。',
         alt: 'Code Miner 課題の画面',
+        details: '現在開発中です。',
       },
       {
         title: 'Conta Simples',
         role: 'フルスタック開発',
         description: 'バックエンドは完成、フロントエンドは開発中です。',
         alt: 'Conta Simples 課題の画面',
+        details: 'バックエンドは完成、フロントエンドは開発中です。',
       },
     ],
     open: 'プロジェクトを開く',
@@ -214,6 +231,12 @@ const ja = {
   tools: {
     label: 'ツール',
     title: '使用ツール',
+  },
+  workstation: {
+    label: 'ワークステーション',
+    title: 'アイデアがコードになる場所',
+    text: 'デザインシステムからデプロイまで、Web とモバイルのプロダクトを一貫してつくるための環境です。毎日使っているツールはこちら。',
+    stageLabel: 'ネオングリッドの上に置かれたゲーミング PC の 3D モデル',
   },
   process: {
     label: 'プロセス',
@@ -249,6 +272,7 @@ const ja = {
     locationLabel: '所在地',
     locationValue: 'ブラジル',
     githubLabel: 'GitHub',
+    globeCaption: 'ブラジルから世界へ',
     formLabel: 'お問い合わせフォーム',
     fields: {
       name: 'お名前',
@@ -275,6 +299,41 @@ const ja = {
     rights: 'All rights reserved.',
     builtWith: 'Next.js と Tailwind CSS でデザイン・開発',
     modelCredits: '3D モデル（CC BY 4.0）：',
+  },
+  original: {
+    title: 'Felipe Monteiro | ポートフォリオ',
+    home: 'ホーム',
+    nav: {
+      experience: '経歴',
+      projects: 'プロジェクト',
+      about: '自己紹介',
+      contact: 'お問い合わせ',
+    },
+    heroRole: 'フルスタックエンジニア',
+    heroStack: 'REACT, NODE & REACT NATIVE',
+    experienceTitle: '職務経歴',
+    experienceSubtitle: 'キャリアの歩み',
+    projectsTitle: 'プロジェクト',
+    projectsSubtitle: '企業の採用選考で取り組んだ技術課題',
+    projectTestTitle: '{title} – {role}の採用課題',
+    projectInProgress: '開発中のプロジェクト',
+    aboutTitle: '自己紹介',
+    photoAlt: 'Felipe の写真',
+    whoAmI: '私について',
+    aboutLines: [
+      'フルスタックエンジニアです。',
+      'テクノロジーと、ものづくりが大好きです！',
+    ],
+    aboutQuestion: 'では、何をつくるのか？',
+    aboutAnswer: 'さまざまな課題に対するスマートなソリューションです。',
+    aboutCta:
+      'もっと知りたいですか？お気軽にご連絡ください。コーヒーでも飲みながら話しましょう。',
+    skillsLabel: 'スキルレベル',
+    educationTitle: '学歴',
+    educationSubtitle: 'ブラジル有数の名門大学での確かな学術的バックグラウンド',
+    contactTitle: 'お問い合わせ',
+    contactSubtitle: 'お気軽にメッセージをお送りください',
+    send: '送信',
   },
   cyber: {
     kicker: 'こんにちは、私は',
@@ -309,8 +368,8 @@ const ja = {
       },
       {
         label: '03 · 現在',
-        title: '世界に広がる E コマース',
-        text: '分散チームとともに海外の E コマースプラットフォームを手がけ、パフォーマンスと品質を追求しています。',
+        title: 'コードからプロダクトへ',
+        text: '武道・格闘技のエコシステム向けプラットフォーム DojoFind の CEO 兼 CTO。eBay や ZeroHash などの海外プロジェクトでの経験を活かしています。',
       },
     ],
     ctaTitle: '街歩きはいかがでしたか？',

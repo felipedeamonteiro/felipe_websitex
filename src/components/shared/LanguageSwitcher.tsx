@@ -10,13 +10,22 @@ interface LanguageSwitcherProps {
   className?: string;
   /** Inline row of all languages (used inside the mobile menu). */
   inline?: boolean;
+  /**
+   * `glass` uses the --g-* tokens of the redesigned pages; `classic` uses the
+   * original page's --accent / --nav-background / --text variables.
+   */
+  variant?: 'glass' | 'classic';
 }
 
 export default function LanguageSwitcher({
   className,
   inline = false,
+  variant = 'glass',
 }: LanguageSwitcherProps) {
-  const { asPath } = useRouter();
+  const classic = variant === 'classic';
+  // Drop the #hash: the server never sees it, so keeping it makes the links
+  // differ between the SSR HTML and the first client render (hydration error).
+  const path = useRouter().asPath.split('#')[0];
   const t = useT();
   const current = useLocale();
   const [open, setOpen] = useState(false);
@@ -42,12 +51,19 @@ export default function LanguageSwitcher({
   }, [open]);
 
   const linkClass = (active: boolean) =>
-    clsx(
-      'font-mono block rounded-md px-3 py-2 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--g-accent-3)]',
-      active
-        ? 'bg-[var(--g-accent-2)]/15 text-[var(--g-accent-2)]'
-        : 'text-[var(--g-text)] hover:bg-[var(--g-accent)]/10',
-    );
+    classic
+      ? clsx(
+          'block rounded-md px-3 py-2 text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300',
+          active
+            ? 'bg-(--accent)/15 text-(--accent)'
+            : 'text-(--text) hover:bg-black/10',
+        )
+      : clsx(
+          'font-mono block rounded-md px-3 py-2 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--g-accent-3)]',
+          active
+            ? 'bg-[var(--g-accent-2)]/15 text-[var(--g-accent-2)]'
+            : 'text-[var(--g-text)] hover:bg-[var(--g-accent)]/10',
+        );
 
   if (inline) {
     return (
@@ -58,7 +74,7 @@ export default function LanguageSwitcher({
         {locales.map((locale) => (
           <li key={locale}>
             <Link
-              href={asPath}
+              href={path}
               locale={locale}
               scroll={false}
               hrefLang={locale}
@@ -83,7 +99,11 @@ export default function LanguageSwitcher({
         aria-controls={menuId}
         aria-label={`${t.nav.language}: ${localeLabels[current].name}`}
         onClick={() => setOpen((value) => !value)}
-        className="flex h-10 items-center gap-1.5 rounded-full border border-[var(--g-border)] px-3 font-mono text-xs tracking-wider text-[var(--g-text)] uppercase transition hover:border-[var(--g-accent-2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--g-accent-3)]"
+        className={
+          classic
+            ? 'flex h-10 items-center gap-1.5 rounded-full border border-(--accent)/50 px-3 text-xs font-bold tracking-wider text-(--accent) uppercase transition hover:bg-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300'
+            : 'flex h-10 items-center gap-1.5 rounded-full border border-[var(--g-border)] px-3 font-mono text-xs tracking-wider text-[var(--g-text)] uppercase transition hover:border-[var(--g-accent-2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--g-accent-3)]'
+        }
       >
         <FiGlobe aria-hidden="true" className="text-sm" />
         {localeLabels[current].short}
@@ -95,12 +115,15 @@ export default function LanguageSwitcher({
       <ul
         id={menuId}
         hidden={!open}
-        className="glass absolute top-12 right-0 z-50 min-w-36 rounded-xl p-1.5"
+        className={clsx(
+          'absolute top-12 right-0 z-50 min-w-36 rounded-xl p-1.5',
+          classic ? 'bg-(--nav-background) shadow-lg' : 'glass',
+        )}
       >
         {locales.map((locale) => (
           <li key={locale}>
             <Link
-              href={asPath}
+              href={path}
               locale={locale}
               scroll={false}
               hrefLang={locale}

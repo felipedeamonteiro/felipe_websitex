@@ -10,6 +10,7 @@ import {
 import { experiences, profile, projects, tools } from '../../content/profile';
 import useT from '../../i18n/useT';
 import ContactForm from '../shared/ContactForm';
+import ModelCredits from '../shared/ModelCredits';
 import { ComputersCanvas, EarthCanvas, TechBallsCanvas } from './canvas';
 import { fadeIn, slideIn, textVariant } from './motion';
 import SectionWrapper from './SectionWrapper';
@@ -198,11 +199,18 @@ export function CyberExperience() {
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="relative mb-12 grid grid-cols-[3rem_1fr] gap-6 md:grid-cols-[1fr_4rem_1fr] md:gap-8"
             >
-              <span className="relative z-10 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-2 border-[var(--color-neon-cyan)] bg-white p-1.5 shadow-[0_0_18px_var(--color-neon-cyan)] md:col-start-2 md:mx-auto md:h-16 md:w-16">
+              <span
+                className="relative z-10 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-2 border-[var(--color-neon-cyan)] bg-white p-1.5 shadow-[0_0_18px_var(--color-neon-cyan)] md:col-start-2 md:mx-auto md:h-16 md:w-16"
+                style={
+                  data.logoBg ? { backgroundColor: data.logoBg } : undefined
+                }
+              >
                 <Image
                   src={data.logo}
                   alt={data.company}
-                  className="h-full w-full object-contain"
+                  className={`object-contain ${
+                    data.logoInset ? 'h-[72%] w-[72%]' : 'h-full w-full'
+                  }`}
                   sizes="64px"
                 />
               </span>
@@ -400,35 +408,7 @@ export function CyberFooter() {
       <p>
         © {new Date().getFullYear()} {profile.fullName}. {t.footer.rights}
       </p>
-      <p className="mt-2">
-        {t.footer.modelCredits}{' '}
-        <a
-          className="underline hover:text-[var(--color-neon-cyan)]"
-          href="https://sketchfab.com/3d-models/gaming-desktop-pc-d1d8282c9916438091f11aeb28787b66"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          “Gaming Desktop PC” by Yolala1232
-        </a>{' '}
-        ·{' '}
-        <a
-          className="underline hover:text-[var(--color-neon-cyan)]"
-          href="https://sketchfab.com/3d-models/stylized-planet-789725db86f547fc9163b00f302c3e70"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          “Stylized planet” by cmzw
-        </a>{' '}
-        ·{' '}
-        <a
-          className="underline hover:text-[var(--color-neon-cyan)]"
-          href="http://creativecommons.org/licenses/by/4.0/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CC BY 4.0
-        </a>
-      </p>
+      <ModelCredits className="mt-2" />
     </footer>
   );
 }

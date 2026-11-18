@@ -27,13 +27,7 @@ const en = {
     toDark: 'Switch to dark theme',
     social: 'Social media',
     backToTop: 'Back to top',
-  },
-  switcher: {
-    label: 'Compare design versions',
-    original: 'Original',
-    glass: 'Glass',
-    cyber: '3D',
-    parallax: 'Parallax',
+    backHome: 'Back to portfolio',
   },
   hero: {
     kicker: 'Full-Stack Engineer',
@@ -159,9 +153,24 @@ const en = {
           "Front-end developer across the company's projects: design system, HubSpot integration, bug fixing, code maintenance and building a back office.",
       },
       {
-        period: 'Since Feb 2021',
+        period: 'Feb 2021 – Nov 2023',
         description:
           'React front-end developer on international projects, with clients and teammates around the world, focused on building and maintaining e-commerce platforms.',
+      },
+      {
+        period: 'Jun 2024 – Jan 2025',
+        description:
+          "Full-stack engineer with React, React Native and Node.js. We built an app for SDAMed that connects over Bluetooth to its veterinary-care hardware. We also worked on a Visa project with São Paulo City Hall at Itaú's CUBO hub to implement a new payment system for public transportation.",
+      },
+      {
+        period: 'Jan 2025 – Sep 2026',
+        description:
+          'Full-stack engineer on several international projects: 8 months at eBay, 3 months on the Momeaze app for Ninja Concepts and then 4 months at ZeroHash, a cryptocurrency company.',
+      },
+      {
+        period: 'Since Aug 2021',
+        description:
+          "What began as a personal project is now a startup with a launched MVP. DojoFind is a platform for the martial arts ecosystem, with a gym finder, social network, marketplace, events board and 4 different user types. I am the company's CEO and CTO. It includes a web platform, its own app, a back office for staff and a full DevOps infrastructure I built with the help of AI.",
       },
     ],
     academic: 'Academic',
@@ -178,6 +187,8 @@ const en = {
         description:
           'Clinic listing and a form to register new ones, following the layout, integrating the Correios API and implementing sorting.',
         alt: 'Screenshot of the Caos Focado challenge',
+        details:
+          'The project consists of building a listing of previously provided clinics and a form to add new ones. The task included following the layout, integrating the Correios API and implementing sorting.',
       },
       {
         title: 'Credere',
@@ -185,6 +196,8 @@ const en = {
         description:
           'Full-stack project with the back end on Digital Ocean and the front end on Vercel. The app controls a probe moving on a 2D plane.',
         alt: 'Screenshot of the Credere challenge',
+        details:
+          'Full-stack project with the back end hosted on Digital Ocean and the front end on Vercel. The app controls a probe that moves on a 2D plane.',
       },
       {
         title: 'Venturus',
@@ -192,18 +205,22 @@ const en = {
         description:
           'Dashboard inspired by Cartola FC for building soccer teams using an external API. One of the most challenging layouts I have built.',
         alt: 'Screenshot of the Venturus challenge',
+        details:
+          'Dashboard inspired by Cartola FC for creating custom soccer teams using an external API. The complex layout made this one of the most challenging projects I have built.',
       },
       {
         title: 'Code Miner',
         role: 'Full-Stack Dev',
         description: 'Still under construction.',
         alt: 'Screenshot of the Code Miner challenge',
+        details: 'Still under construction.',
       },
       {
         title: 'Conta Simples',
         role: 'Full-Stack Dev',
         description: 'Back end done, front end still under construction.',
         alt: 'Screenshot of the Conta Simples challenge',
+        details: 'Back end done, with the front end still under construction.',
       },
     ],
     open: 'Open project',
@@ -215,6 +232,12 @@ const en = {
   tools: {
     label: 'Tools',
     title: 'Tools I use',
+  },
+  workstation: {
+    label: 'Workstation',
+    title: 'Where ideas become code',
+    text: 'A setup built for shipping web and mobile products end to end, from the design system to the deploy. These are the tools I use every day.',
+    stageLabel: '3D model of a gaming desktop PC on a neon grid',
   },
   process: {
     label: 'Process',
@@ -250,6 +273,7 @@ const en = {
     locationLabel: 'Location',
     locationValue: 'Brazil',
     githubLabel: 'GitHub',
+    globeCaption: 'From Brazil to the world',
     formLabel: 'Contact form',
     fields: {
       name: 'Name',
@@ -276,6 +300,41 @@ const en = {
     rights: 'All rights reserved.',
     builtWith: 'Designed and built with Next.js and Tailwind CSS',
     modelCredits: '3D models (CC BY 4.0):',
+  },
+  original: {
+    title: 'Felipe Monteiro | Portfolio',
+    home: 'HOME',
+    nav: {
+      experience: 'Experience',
+      projects: 'Projects',
+      about: 'About me',
+      contact: 'Contact',
+    },
+    heroRole: 'FULL-STACK ENGINEER',
+    heroStack: 'REACT, NODE & REACT NATIVE',
+    experienceTitle: 'Professional Experience',
+    experienceSubtitle: 'Milestones of my career',
+    projectsTitle: 'Projects',
+    projectsSubtitle: 'Technical tests from company hiring processes',
+    projectTestTitle: '{role} test - {title}',
+    projectInProgress: 'Project under construction',
+    aboutTitle: 'About me',
+    photoAlt: 'Photo of Felipe',
+    whoAmI: 'Who am I?',
+    aboutLines: [
+      'I am a full-stack engineer.',
+      'I am passionate about technology and about building!',
+    ],
+    aboutQuestion: 'But building what?',
+    aboutAnswer: 'Smart solutions for all kinds of problems.',
+    aboutCta: "Want to know more? Get in touch and let's grab a coffee.",
+    skillsLabel: 'Skill levels',
+    educationTitle: 'EDUCATION',
+    educationSubtitle:
+      "Solid academic background at one of Brazil's most renowned universities",
+    contactTitle: 'Contact',
+    contactSubtitle: "Leave me a message and let's chat",
+    send: 'Send',
   },
   cyber: {
     kicker: "Hi, I'm",
@@ -309,8 +368,8 @@ const en = {
       },
       {
         label: '03 · Today',
-        title: 'E-commerce worldwide',
-        text: 'International e-commerce platforms with distributed teams, focused on performance and quality.',
+        title: 'From code to product',
+        text: 'CEO and CTO of DojoFind, a platform for the martial arts ecosystem, backed by international projects such as eBay and ZeroHash.',
       },
     ],
     ctaTitle: 'Enjoyed the ride?',

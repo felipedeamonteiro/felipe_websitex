@@ -1,7 +1,11 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useRef } from 'react';
-import { experiences, type ExperienceData } from '../../content/profile';
+import {
+  currentExperienceIndex,
+  experiences,
+  type ExperienceData,
+} from '../../content/profile';
 import type { Dictionary } from '../../i18n/dictionaries/pt-BR';
 import useT from '../../i18n/useT';
 import useInView from '../../utils/intersectionMethod';
@@ -32,11 +36,15 @@ function TimelineEntry({ data, text, side, isCurrent }: EntryProps) {
             ? 'border-[var(--g-accent-3)] shadow-[0_0_0_6px_color-mix(in_oklab,var(--g-accent-3)_18%,transparent),0_0_30px_var(--g-accent-3)]'
             : 'border-[var(--g-border)] blur-[1.5px] grayscale',
         )}
+        style={data.logoBg ? { backgroundColor: data.logoBg } : undefined}
       >
         <Image
           src={data.logo}
           alt={data.company}
-          className="h-full w-full object-contain"
+          className={clsx(
+            'object-contain',
+            data.logoInset ? 'h-[72%] w-[72%]' : 'h-full w-full',
+          )}
           sizes="96px"
         />
       </div>
@@ -113,7 +121,7 @@ export default function ExperienceSection() {
               data={entry.data}
               text={entry.text}
               side={position % 2 === 0 ? 'left' : 'right'}
-              isCurrent={entry.index === experiences.length - 1}
+              isCurrent={entry.index === currentExperienceIndex}
             />
           ))}
         </ol>

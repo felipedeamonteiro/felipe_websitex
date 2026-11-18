@@ -1,6 +1,9 @@
+/** Labels live in dictionary.original.nav[key]. */
 export const navigationLinks = [
-  { href: '#section-experiencia', label: 'Experiência', color: '#03e9f4' },
-  { href: '#section-projetos', label: 'Projetos', color: '#c3a2ff' },
-  { href: '#section-sobreMim', label: 'Sobre mim', color: '#ff839e' },
-  { href: '#section-contato', label: 'Contato', color: '#0ef462' },
+  { href: '#section-experiencia', key: 'experience', color: '#03e9f4' },
+  { href: '#section-projetos', key: 'projects', color: '#9d4dff' },
+  { href: '#section-sobreMim', key: 'about', color: '#ff0000' },
+  { href: '#section-contato', key: 'contact', color: '#0ef462' },
 ] as const;
+
+//#ff839e

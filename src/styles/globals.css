@@ -10,7 +10,7 @@
     var(--font-jetbrains), var(--font-noto-jp), ui-monospace, monospace;
 }
 
-/* Neon palette used by the redesigned pages (/glass, /cyber, /parallax). */
+/* Neon palette used by the main page (/) and the /glass, /cyber, /parallax layouts. */
 @theme {
   --color-void: #07061a;
   --color-ink: #0e0b2a;
@@ -424,7 +424,7 @@ a {
 }
 
 /* ==========================================================================
-   Neon glass design system (/glass, /cyber, /parallax)
+   Neon glass design system (/, /glass, /cyber, /parallax)
    Scoped under .glass-theme so the original page is unaffected.
    ========================================================================== */
 

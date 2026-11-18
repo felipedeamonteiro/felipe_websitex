@@ -8,7 +8,6 @@ import {
   Roboto_Slab,
 } from 'next/font/google';
 import { useCallback, useEffect, useState } from 'react';
-import DesignSwitcher from '../components/shared/DesignSwitcher';
 import '../styles/globals.css';
 
 const orbitron = Orbitron({
@@ -105,7 +104,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         toggleTheme={toggleTheme}
         theme={{ title: theme }}
       />
-      <DesignSwitcher />
     </div>
   );
 }

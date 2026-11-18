@@ -14,10 +14,13 @@ import {
 } from 'react-icons/si';
 import { TbBrandReactNative } from 'react-icons/tb';
 import AprendizImg from '@public/AprendizDigital.png';
+import BairesDevLogo from '@public/BairesDev.png';
 import CaosImg from '@public/caos_focado_test.png';
 import CodeMinerImg from '@public/code_miner.png';
 import ContaSimplesImg from '@public/conta_simples.jpeg';
 import CredereImg from '@public/credere_test.png';
+import DojoFindLogo from '@public/DojoFind.png';
+import EBMGroupLogo from '@public/EBM_Group.png';
 import FormulaImg from '@public/FormulaSAE.png';
 import LdemImg from '@public/LDEM.jpg';
 import LetrusImg from '@public/letrus.png';
@@ -38,7 +41,7 @@ export const profile = {
   fullName: 'Felipe de Alcântara Monteiro',
   github: 'https://github.com/felipedeamonteiro',
   /** First professional software-development role (Letrus). */
-  devCareerStart: new Date(2020, 0, 1),
+  devCareerStart: new Date(2019, 0, 1),
 } as const;
 
 export type ExperienceKind = 'work' | 'academic';
@@ -47,6 +50,13 @@ export interface ExperienceData {
   company: string;
   kind: ExperienceKind;
   logo: StaticImageData;
+  /**
+   * The logo has content up to its corners, so it is shrunk to fit inside the
+   * circular frame instead of being clipped by it.
+   */
+  logoInset?: boolean;
+  /** Background of the circular frame (defaults to white). */
+  logoBg?: string;
 }
 
 /** Same order as dictionary.experience.items. */
@@ -60,7 +70,19 @@ export const experiences: ExperienceData[] = [
   { company: 'Aprendiz Digital', kind: 'work', logo: AprendizImg },
   { company: 'Letrus', kind: 'work', logo: LetrusImg },
   { company: 'Object Edge', kind: 'work', logo: ObjectEdgeLogo },
+  {
+    company: 'EBM Group',
+    kind: 'work',
+    logo: EBMGroupLogo,
+    logoInset: true,
+    logoBg: '#010101',
+  },
+  { company: 'BairesDev', kind: 'work', logo: BairesDevLogo, logoInset: true },
+  { company: 'DojoFind', kind: 'work', logo: DojoFindLogo, logoInset: true },
 ];
+
+/** Index of the role that is still ongoing (shown with a "current" badge). */
+export const currentExperienceIndex = experiences.length - 1;
 
 export interface ProjectData {
   image: StaticImageData;

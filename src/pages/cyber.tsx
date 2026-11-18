@@ -22,6 +22,8 @@ export default function CyberPage() {
       <Head>
         <title>{t.meta.cyberTitle}</title>
         <meta name="description" content={t.meta.glassDescription} />
+        {/* Alternative layout: reachable by URL only, kept out of search results. */}
+        <meta name="robots" content="noindex" />
       </Head>
       <div className="cyber-backdrop" aria-hidden="true" />
       {webgl && <StarsCanvas />}

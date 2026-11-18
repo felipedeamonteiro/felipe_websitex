@@ -19,10 +19,12 @@ export default function GlassPage({ toggleTheme, theme }: GlassPageProps) {
   const t = useT();
 
   return (
-    <div className="glass-theme font-body relative min-h-screen overflow-x-clip bg-[var(--g-bg)] selection:bg-[var(--g-accent-2)] selection:text-white">
+    <div className="glass-theme font-body relative min-h-screen overflow-x-clip bg-(--g-bg) selection:bg-(--g-accent-2) selection:text-white">
       <Head>
         <title>{t.meta.glassTitle}</title>
         <meta name="description" content={t.meta.glassDescription} />
+        {/* Alternative layout: reachable by URL only, kept out of search results. */}
+        <meta name="robots" content="noindex" />
       </Head>
       <div className="cyber-backdrop" aria-hidden="true" />
       <GlassNavbar

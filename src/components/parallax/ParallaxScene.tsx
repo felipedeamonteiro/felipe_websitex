@@ -47,8 +47,24 @@ function Layer({
   );
 }
 
-/** Sticky 250vh neon-city hero; each layer moves at its own speed. */
-export default function ParallaxScene() {
+interface ParallaxSceneProps {
+  /** h1 when the scene is the page hero (/parallax), h2 when embedded (/). */
+  headingLevel?: 'h1' | 'h2';
+  /**
+   * Fade the scene's entry and exit edges into whatever is behind the section
+   * (mask on the tall section, so the pinned middle part stays fully opaque).
+   */
+  blend?: boolean;
+  id?: string;
+}
+
+/** Sticky 250vh neon-city scene; each layer moves at its own speed. */
+export default function ParallaxScene({
+  headingLevel = 'h1',
+  blend = false,
+  id,
+}: ParallaxSceneProps) {
+  const Heading = headingLevel;
   const t = useT();
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
@@ -80,8 +96,13 @@ export default function ParallaxScene() {
   return (
     <section
       ref={ref}
+      id={id}
       aria-labelledby="parallax-title"
-      className="relative h-[250vh]"
+      className={`relative h-[250vh] ${
+        blend
+          ? '[mask-image:linear-gradient(180deg,transparent,#000_12rem,#000_calc(100%-12rem),transparent)]'
+          : ''
+      }`}
     >
       <div
         onPointerMove={onPointerMove}
@@ -145,12 +166,12 @@ export default function ParallaxScene() {
           <p className="glass inline-block rounded-md px-3 py-1.5 font-mono text-xs tracking-[0.35em] text-[var(--color-neon-cyan)] uppercase sm:text-sm">
             {t.parallax.kicker}
           </p>
-          <h1
+          <Heading
             id="parallax-title"
             className="font-display mx-auto mt-5 max-w-5xl text-[clamp(2.4rem,7.5vw,6.5rem)] leading-[0.95] font-black text-balance uppercase"
           >
             <span className="text-chrome">{t.parallax.title}</span>
-          </h1>
+          </Heading>
           <p className="font-body mt-6 text-lg text-[var(--g-muted)] sm:text-xl">
             {t.parallax.subtitle}
           </p>

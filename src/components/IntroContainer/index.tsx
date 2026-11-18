@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import darkThemeImage from '@public/blue_night_sky.jpg';
 import lightThemeImage from '@public/white_landscape.jpg';
+import useT from '../../i18n/useT';
 
 const stars = Array.from({ length: 10 }, (_, index) => index + 1);
 
 export default function IntroContainer() {
+  const t = useT();
+
   return (
     <section
       id="section-home"
@@ -39,9 +42,9 @@ export default function IntroContainer() {
           Felipe de Alcântara Monteiro
         </p>
         <h1 className="hero-title mt-8 text-[clamp(2.25rem,6vw,4.75rem)] leading-[1.15] font-bold text-[var(--accent)] dark:text-white">
-          ENGENHEIRO FULL-STACK
+          {t.original.heroRole}
           <span className="mt-3 block text-[0.7em]">
-            REACT, NODE &amp; REACT NATIVE
+            {t.original.heroStack}
           </span>
         </h1>
       </div>

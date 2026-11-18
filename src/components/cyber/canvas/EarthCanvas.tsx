@@ -13,17 +13,17 @@ function Earth() {
 
 export default function EarthCanvas({
   loadingLabel,
+  className = 'relative h-[22rem] w-full sm:h-[30rem] lg:h-full lg:min-h-[32rem]',
 }: {
   loadingLabel: string;
+  /** Sizing of the wrapper; must stay `relative` for the loader overlay. */
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, '100px');
 
   return (
-    <div
-      ref={ref}
-      className="relative h-[22rem] w-full sm:h-[30rem] lg:h-full lg:min-h-[32rem]"
-    >
+    <div ref={ref} className={className}>
       <CanvasLoader label={loadingLabel} />
       <Canvas
         frameloop={inView ? 'always' : 'never'}

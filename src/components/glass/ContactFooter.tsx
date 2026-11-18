@@ -1,10 +1,52 @@
+import { useRef } from 'react';
 import { FiArrowUp, FiGithub, FiMapPin } from 'react-icons/fi';
 import { profile } from '../../content/profile';
 import useT from '../../i18n/useT';
+import useOnceInView from '../../utils/useOnceInView';
+import { EarthCanvas } from '../cyber/canvas';
 import ContactForm from '../shared/ContactForm';
+import ModelCredits from '../shared/ModelCredits';
 import { glassSections, Logo } from './GlassNavbar';
 
-export function ContactSection() {
+/** 3D planet (from /cyber) inside a dashed orbit, under the contact details. */
+function ContactGlobe() {
+  const t = useT();
+  const ref = useRef<HTMLElement>(null);
+  const near = useOnceInView(ref);
+
+  return (
+    <figure
+      ref={ref}
+      className="relative mx-auto mt-10 aspect-square w-full max-w-sm"
+    >
+      <span
+        aria-hidden="true"
+        className="absolute inset-[6%] rounded-full border border-dashed border-(--g-accent-3)/45 motion-safe:animate-[spin-slow_60s_linear_infinite]"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-[16%] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--g-accent-2)_30%,transparent),transparent_70%)] blur-2xl"
+      />
+      {near && (
+        <EarthCanvas
+          loadingLabel={t.cyber.loading}
+          className="relative h-full w-full"
+        />
+      )}
+      <figcaption className="glass absolute bottom-[4%] left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs whitespace-nowrap text-(--g-text)">
+        <FiMapPin aria-hidden="true" className="text-(--g-accent-2)" />
+        {t.contact.globeCaption}
+      </figcaption>
+    </figure>
+  );
+}
+
+interface ContactSectionProps {
+  /** Show the 3D globe; pass the WebGL check result (null while checking). */
+  globe?: boolean | null;
+}
+
+export function ContactSection({ globe = false }: ContactSectionProps) {
   const t = useT();
 
   return (
@@ -63,14 +105,23 @@ export function ContactSection() {
               </div>
             </div>
           </dl>
+          {globe && <ContactGlobe />}
         </div>
-        <ContactForm />
+        {/* Centred so the form keeps its natural height next to the globe. */}
+        <div className="self-center">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );
 }
 
-export function GlassFooter() {
+interface GlassFooterProps {
+  /** Show the CC BY credits for the 3D models (required where they appear). */
+  credits?: boolean;
+}
+
+export function GlassFooter({ credits = false }: GlassFooterProps) {
   const t = useT();
 
   return (
@@ -118,6 +169,9 @@ export function GlassFooter() {
       <p className="mt-8 text-center font-mono text-[0.68rem] tracking-wider text-[var(--g-muted)] uppercase">
         {t.footer.builtWith}
       </p>
+      {credits && (
+        <ModelCredits className="mx-auto mt-3 max-w-3xl text-center text-(--g-muted)" />
+      )}
     </footer>
   );
 }
